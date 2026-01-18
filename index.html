@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trouwfeest – 17 oktober 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f7f4f0;
+      color: #3b3b3b;
+    }
+    header {
+      background: url('https://images.unsplash.com/photo-1523430410476-0185cb1f6ff9') center/cover no-repeat;
+      padding: 120px 20px;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .info-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+    }
+    iframe {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Jordina & Joris</h1>
+  <p>17 oktober 2026</p>
+  <p style="font-style:italic; margin-top:20px;">Arthur, Jinthe, Sitske & Lieze<br>nodigen jullie met veel liefde uit</p>
+  <div id="countdown" style="margin-top:30px; font-size:1.2rem;"></div>
+</header>
+
+<section>
+  <div class="info-box">
+    <h2>De grote dag</h2>
+    <p><strong>Burgerlijke trouw</strong><br>
+    Gemeentehuis Borgerhout – Moorkesplein</p>
+    <p><strong>Avondfeest</strong><br>
+    Start om 20u – <a href="https://www.ouddamstation.be/" target="_blank">’t Oud Damstation</a></p>
+  </div>
+
+  <div class="info-box">
+    <h2>Inschrijven</h2>
+    <p>Gelieve via onderstaand formulier te laten weten of je aanwezig bent.</p>
+    <!-- Google Form embed -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMYURL/viewform?embedded=true" height="600">Laden…</iframe>
+  </div>
+
+  <div class="info-box">
+    <h2>Locatie & parkeren</h2>
+    <p>Hieronder vind je de locatie van ’t Oud Damstation en de onmiddellijke omgeving.</p>
+    <iframe 
+      src="https://www.google.com/maps?q=Oud+DAMstation+Antwerpen&output=embed" 
+      height="400">
+    </iframe>
+  </div>
+
+  <div class="info-box">
+    <h2>Herinneringen</h2>
+    <p>Voor en na het feest delen we hier enkele mooie momenten 💛</p>
+  </div>
+</section>
+
+<footer>
+  Met liefde gemaakt voor ons trouwfeest
+</footer>
+
+<script>
+  const weddingDate = new Date("2026-10-17T00:00:00").getTime();
+  const countdownEl = document.getElementById("countdown");
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if (distance < 0) {
+      countdownEl.innerHTML = "Vandaag vieren we de liefde 💛";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    countdownEl.innerHTML = `${days} dagen tot ons trouwfeest`;
+  }, 1000);
+</script>
+</body>
+</html>
 
