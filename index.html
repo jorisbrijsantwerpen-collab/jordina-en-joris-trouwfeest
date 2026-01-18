@@ -13,10 +13,25 @@
       color: #3b3b3b;
     }
     header {
-      background: url(20250821_204526.jpg) center/cover no-repeat;
+      position: relative;
+      background: url('banner.jpg') center/cover no-repeat fixed;
       padding: 120px 20px;
       text-align: center;
       color: white;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+    header * {
+      position: relative;
+      z-index: 2;
     }
     header h1 {
       font-family: 'Playfair Display', serif;
@@ -116,4 +131,3 @@
 </script>
 </body>
 </html>
-
