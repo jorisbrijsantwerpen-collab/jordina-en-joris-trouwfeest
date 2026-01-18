@@ -14,9 +14,9 @@
     }
     header {
       position: relative;
-      background: url('20250821_204526.jpg') center/cover no-repeat fixed;
-      padding: 120px 20px;
-      text-align: center;_
+      background: url('banner.jpg') center/cover no-repeat fixed;
+      padding: 160px 20px;
+      text-align: center;
       color: white;
     }
     header::before {
@@ -26,12 +26,29 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.28);
       z-index: 1;
     }
     header * {
       position: relative;
       z-index: 2;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.2rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+    #countdown {
+      margin-top: 35px;
+      font-size: 1.4rem;
+      font-style: italic;
+      letter-spacing: 1px;
     }
     header h1 {
       font-family: 'Playfair Display', serif;
@@ -72,6 +89,7 @@
 
 <header>
   <h1>Jordina & Joris</h1>
+  <p>17 oktober 2026</p>
   <p style="font-style:italic; margin-top:20px;">Arthur, Jinthe, Sitske & Lieze<br>nodigen jullie met veel liefde uit</p>
   <div id="countdown" style="margin-top:30px; font-size:1.2rem;"></div>
 </header>
