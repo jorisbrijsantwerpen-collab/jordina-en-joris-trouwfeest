@@ -163,6 +163,8 @@
 </footer>
 
 <script>
+<script>
+  // Countdown
   const weddingDate = new Date("2026-10-17T00:00:00").getTime();
   const countdownEl = document.getElementById("countdown");
 
@@ -178,29 +180,12 @@
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     countdownEl.innerHTML = `${days} dagen tot ons trouwfeest`;
   }, 1000);
-   // Slideshow: herinneringen door de jaren heen
-// Automatische slideshow: foto1.jpg t.e.m. foto99.jpg
-const slideshowImages = [];
 
-for (let i = 1; i <= 99; i++) {
-  slideshowImages.push(`foto${i}.jpg`);
-}
-
-let currentSlide = 0;
-const slideshowEl = document.getElementById("slideshowImage");
-
-setInterval(() => {
-  if (!slideshowEl) return;
-
-  slideshowEl.style.opacity = 0;
-
-  setTimeout(() => {
-    currentSlide = (currentSlide + 1) % slideshowImages.length;
-    slideshowEl.src = slideshowImages[currentSlide];
-    slideshowEl.style.opacity = 1;
-  }, 600);
-}, 3500);
-
+  // Slideshow: foto1.jpg t.e.m. foto99.jpg
+  const slideshowImages = [];
+  for (let i = 1; i <= 99; i++) {
+    slideshowImages.push(`foto${i}.jpg`);
+  }
 
   let currentSlide = 0;
   const slideshowEl = document.getElementById("slideshowImage");
@@ -208,17 +193,17 @@ setInterval(() => {
   setInterval(() => {
     if (!slideshowEl) return;
 
-    // fade out
     slideshowEl.style.opacity = 0;
 
     setTimeout(() => {
       currentSlide = (currentSlide + 1) % slideshowImages.length;
       slideshowEl.src = slideshowImages[currentSlide];
-
-      // fade in
       slideshowEl.style.opacity = 1;
     }, 600);
   }, 3500);
+</script>
+
+ 
 </script>
 </body>
 </html>
