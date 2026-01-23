@@ -179,12 +179,28 @@
     countdownEl.innerHTML = `${days} dagen tot ons trouwfeest`;
   }, 1000);
    // Slideshow: herinneringen door de jaren heen
-  const slideshowImages = [
-    "foto1.jpg",
-    "foto2.jpg",
-    "foto3.jpg",
-    "foto4.jpg"
-  ];
+// Automatische slideshow: foto1.jpg t.e.m. foto99.jpg
+const slideshowImages = [];
+
+for (let i = 1; i <= 99; i++) {
+  slideshowImages.push(`foto${i}.jpg`);
+}
+
+let currentSlide = 0;
+const slideshowEl = document.getElementById("slideshowImage");
+
+setInterval(() => {
+  if (!slideshowEl) return;
+
+  slideshowEl.style.opacity = 0;
+
+  setTimeout(() => {
+    currentSlide = (currentSlide + 1) % slideshowImages.length;
+    slideshowEl.src = slideshowImages[currentSlide];
+    slideshowEl.style.opacity = 1;
+  }, 600);
+}, 3500);
+
 
   let currentSlide = 0;
   const slideshowEl = document.getElementById("slideshowImage");
