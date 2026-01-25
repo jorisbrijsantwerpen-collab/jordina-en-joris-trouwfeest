@@ -217,7 +217,20 @@ a:hover {
   </style>
 
 </head>
-<body>
+<script>
+function toonRekening() {
+  const el = document.querySelector('.bankrekening');
+
+  el.innerHTML = "💛 BE82&nbsp;0359&nbsp;7469&nbsp;7568";
+  el.classList.add("fade-in");
+
+  // klik uitschakelen na tonen
+  el.onclick = null;
+}
+</script>
+
+  
+  <body>
 
 <header>
   <h1>Jordina & Joris</h1>
