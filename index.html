@@ -121,7 +121,61 @@ a:hover {
     object-fit: contain;
     background: #efe9e1;
   }
+/* Cadeau-idee styling */
+.gift-box {
+  background: #f8f4ef;
 }
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.gift-part {
+  padding: 30px;
+  border-radius: 12px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.gift-part::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(58, 47, 42, 0.55);
+  z-index: 1;
+}
+
+.gift-part * {
+  position: relative;
+  z-index: 2;
+}
+
+.gift-part h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+/* Achtergronden */
+.gift-part.london {
+  background: url('london.jpg') center/cover no-repeat;
+}
+
+.gift-part.sun {
+  background: url('sun.jpg') center/cover no-repeat;
+}
+
+/* Mobiel */
+@media (max-width: 768px) {
+  .gift-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
   </style>
 
 </head>
@@ -161,6 +215,42 @@ a:hover {
   </a>
 </p>
   </div>
+<div class="info-box gift-box">
+  <h2>Cadeau-idee</h2>
+
+  <p style="text-align:center; font-style:italic;">
+    Jullie aanwezigheid is voor ons het allermooiste cadeau 💛  
+    Wie ons toch graag iets extra’s schenkt, helpt ons dromen waarmaken.
+  </p>
+
+  <div class="gift-grid">
+    <div class="gift-part london">
+      <h3>🎄 Londen in kerstsfeer</h3>
+      <p>
+        Het eerste deel van onze huwelijksreis brengt ons naar Londen,
+        waar we willen genieten van Christmas shopping, lichtjes
+        en winterse gezelligheid.
+      </p>
+    </div>
+
+    <div class="gift-part sun">
+      <h3>☀️ Zon, rust & nietsdoen</h3>
+      <p>
+        Daarna trekken we richting de zon voor een heerlijk ontspannen
+        vakantie: even vertragen, genieten en vooral… niets moeten.
+      </p>
+    </div>
+  </div>
+
+  <p style="margin-top:30px;">
+    We voorzien een <strong>enveloppendoos</strong> op het avondfeest.
+    Wie liever overschrijft, kan dat via onderstaande rekening:
+  </p>
+
+  <p style="font-weight:600; letter-spacing:1px;">
+    BE82&nbsp;0359&nbsp;7469&nbsp;7568
+  </p>
+</div>
 
 <div class="info-box">
   <h2>Locatie & parkeren</h2>
