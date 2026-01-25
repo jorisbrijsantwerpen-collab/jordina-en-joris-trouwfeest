@@ -44,6 +44,68 @@
       letter-spacing: 2px;
       font-size: 1.1rem;
     }
+header {
+  position: relative;
+  background: url('20250821_204526.jpg') center / cover no-repeat fixed;
+  padding: 180px 20px 160px;
+  text-align: center;
+  color: #f2c6d3; /* blush */
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(15, 74, 117, 0.55),
+    rgba(15, 74, 117, 0.75)
+  );
+  z-index: 1;
+}
+
+header * {
+  position: relative;
+  z-index: 2;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.8rem;
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+header .date {
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+  color: #f7dbe3;
+}
+
+header .invite {
+  margin-top: 26px;
+  font-style: italic;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+#countdown {
+  margin-top: 35px;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+/* Mobiel */
+@media (max-width: 768px) {
+  header {
+    padding: 140px 20px 120px;
+  }
+
+  header h1 {
+    font-size: 3.2rem;
+  }
+}
 
     #countdown {
       margin-top: 30px;
