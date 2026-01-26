@@ -265,22 +265,24 @@ header .invite {
   letter-spacing: 0.5px;
 }
 .slideshow {
-  margin-top: 20px;
+  position: relative;
+  width: 100%;
+  height: 520px;              /* vaste hoogte = rust */
+  margin-top: 25px;
   border-radius: 14px;
-  overflow: hidden; 
-  box-shadow: 0 14px 35px rgba(0,0,0,0.18);
-  background: #f8f4ef;
+  overflow: hidden;           /* absoluut noodzakelijk */
+  background: #efe9e1;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.15);
 }
 
 .slideshow img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;            
-  max-height: 520px;        
-  object-fit: contain;       
-  display: block;
-  margin: 0 auto;
+  height: 100%;
+  object-fit: contain;        /* niets wordt afgesneden */
+  opacity: 1;
   transition: opacity 1s ease-in-out;
-  background: #efe9e1;       
 }
 
 
@@ -296,6 +298,11 @@ header .invite {
 @media (max-width: 768px) {
   .slideshow img {
     max-height: 65vh;
+  }
+}
+@media (max-width: 768px) {
+  .slideshow {
+    height: 300px;           
   }
 }
 
@@ -445,14 +452,17 @@ Laat je ook even iets weten als je niet aanwezig kan zijn.
   setInterval(() => {
     if (!slideshowEl) return;
 
-    slideshowEl.style.opacity = 0;
+   slideshowEl.style.opacity = 0;
 
-    setTimeout(() => {
-      currentSlide = (currentSlide + 1) % slideshowImages.length;
-      slideshowEl.src = slideshowImages[currentSlide];
-      slideshowEl.style.opacity = 1;
-    }, 600);
-  }, 3500);
+setTimeout(() => {
+  currentSlide = (currentSlide + 1) % slideshowImages.length;
+  slideshowEl.src = slideshowImages[currentSlide];
+}, 600);
+
+setTimeout(() => {
+  slideshowEl.style.opacity = 1;
+}, 700);
+
 </script>
 
   
