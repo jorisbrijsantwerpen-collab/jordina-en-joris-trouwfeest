@@ -1,58 +1,37 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trouwfeest – 17 oktober 2026</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trouwfeest – 17 oktober 2026</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --blue: #0f4a75;
-      --pink: #f2c6d3;
-      --pink-soft: #f7dbe3;
-      --white: #f9f9f9;
-      --text-dark: #1f2f3a;
-    }
-header {
-  margin-bottom: 120px;
+<style>
+:root {
+  --blue: #0f4a75;
+  --pink: #f2c6d3;
+  --pink-soft: #f7dbe3;
+  --box-bg: #faf7f3;
+  --text-dark: #2a2a2a;
 }
 
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: var(--blue);
-      color: var(--text-dark);
-    }
+/* ALGEMEEN */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--blue);
+  color: var(--text-dark);
+}
 
-    /* HEADER */
-    header {
-      text-align: center;
-      padding: 160px 20px 140px;
-      background: var(--blue);
-      color: var(--pink);
-    }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 4.2rem;
-      letter-spacing: 4px;
-      margin-bottom: 15px;
-    }
-
-    header p {
-      color: var(--pink-soft);
-      letter-spacing: 2px;
-      font-size: 1.1rem;
-    }
+/* HEADER */
 header {
   position: relative;
-  background: url('20250821_204526.jpg') center / cover no-repeat fixed;
+  background: url('20250821_204526.jpg') center/cover no-repeat fixed;
   padding: 180px 20px 160px;
   text-align: center;
-  color: #f2c6d3; /* blush */
+  color: var(--pink);
 }
 
 header::before {
@@ -60,8 +39,8 @@ header::before {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    rgba(15, 74, 117, 0.55),
-    rgba(15, 74, 117, 0.75)
+    rgba(15,74,117,0.55),
+    rgba(15,74,117,0.75)
   );
   z-index: 1;
 }
@@ -73,7 +52,7 @@ header * {
 
 header h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 4.8rem;
+  font-size: 4.6rem;
   letter-spacing: 4px;
   margin-bottom: 14px;
   text-shadow: 0 6px 18px rgba(0,0,0,0.45);
@@ -82,7 +61,7 @@ header h1 {
 header .date {
   font-size: 1.3rem;
   letter-spacing: 3px;
-  color: #f7dbe3;
+  color: var(--pink-soft);
 }
 
 header .invite {
@@ -95,182 +74,127 @@ header .invite {
 #countdown {
   margin-top: 35px;
   font-style: italic;
-  font-size: 1.2rem;
-  color: #ffffff;
+  color: white;
 }
 
-/* Mobiel */
-@media (max-width: 768px) {
-  header {
-    padding: 140px 20px 120px;
-  }
-
-  header h1 {
-    font-size: 3.2rem;
-  }
+/* CONTENT */
+section {
+  max-width: 900px;
+  margin: -80px auto 80px;
+  padding: 0 20px;
 }
 
-    #countdown {
-      margin-top: 30px;
-      font-style: italic;
-      color: white;
-    }
-
-    section {
-      max-width: 900px;
-      margin: -80px auto 80px;
-      padding: 0 20px;
-    }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: var(--blue);
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .info-box {
-  background: #faf7f3;
-  padding: 36px;
-  border-radius: 12px;
-  box-shadow: 0 14px 35px rgba(0,0,0,0.14);
-  border-left: 6px solid #8b6b4f;
-  margin-bottom: 55px;
-}
-    }
-.inschrijf-tekst {
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--blue);
+  margin-bottom: 20px;
   text-align: center;
 }
 
-    /* GIFT SECTION */
-    .gift-box {
-      background: linear-gradient(180deg, var(--pink-soft), white);
-    }
-
-    .gift-intro {
-      text-align: center;
-      font-style: italic;
-      margin-bottom: 35px;
-    }
-
-    .gift-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-    }
-
-    .gift-part {
-      position: relative;
-      padding: 35px;
-      border-radius: 16px;
-      color: white;
-      overflow: hidden;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
-      transition: transform .4s ease;
-    }
-
-    .gift-part:hover {
-      transform: translateY(-6px);
-    }
-
-    .gift-part::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(15,74,117,0.55);
-      z-index: 1;
-    }
-
-    .gift-part * {
-      position: relative;
-      z-index: 2;
-    }
-
-    .gift-part h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-      color: var(--pink);
-    }
-
-    .gift-part p {
-      line-height: 1.6;
-    }
-
-    .gift-part.london {
-      background: url('london.png') center/cover no-repeat;
-    }
-
-    .gift-part.sun {
-      background: url('sun.png') center/cover no-repeat;
-    }
-
-    /* BANK */
-    .bankrekening {
-      margin-top: 25px;
-      padding: 14px 20px;
-      display: inline-block;
-      background: var(--pink-soft);
-      border-radius: 10px;
-      cursor: pointer;
-      font-style: italic;
-      transition: all .3s ease;
-    }
-
-    .bankrekening:hover {
-      background: var(--pink);
-    }
-
-    .bankrekening.fade-in {
-      animation: fadeIn .9s ease forwards;
-      cursor: default;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    iframe {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      background: var(--blue);
-      color: var(--pink-soft);
-      font-size: .9rem;
-    }
-
-    @media (max-width: 768px) {
-      .gift-grid { grid-template-columns: 1fr; }
-      header h1 { font-size: 3rem; }
-    }
-  </style>
-</head>
-
-<script>
-  function toonRekening() {
-    const el = document.querySelector('.bankrekening');
-    el.innerHTML = "💗 BE82&nbsp;0359&nbsp;7469&nbsp;7568";
-    el.classList.add("fade-in");
-    el.onclick = null;
-  }
-.info-box h3 {
+h3 {
+  font-family: 'Playfair Display', serif;
   color: #6b4f3f;
-  letter-spacing: 0.5px;
 }
+
+.info-box {
+  background: var(--box-bg);
+  padding: 36px;
+  border-radius: 14px;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.14);
+  margin-bottom: 55px;
+}
+
+/* INSCHRIJVEN */
+.inschrijf-tekst p {
+  text-align: center;
+}
+
+.inschrijf-link {
+  color: #6b4f3f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.inschrijf-link span {
+  text-decoration: underline;
+}
+
+/* GIFT */
+.gift-box {
+  background: linear-gradient(180deg, var(--pink-soft), var(--box-bg));
+}
+
+.gift-intro {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 35px;
+}
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.gift-part {
+  position: relative;
+  padding: 35px;
+  border-radius: 16px;
+  color: white;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+
+.gift-part::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15,74,117,0.55);
+}
+
+.gift-part * {
+  position: relative;
+  z-index: 2;
+}
+
+.gift-part.london {
+  background: url('london.png') center/cover no-repeat;
+}
+
+.gift-part.sun {
+  background: url('sun.png') center/cover no-repeat;
+}
+
+/* BANK */
+.bankrekening {
+  margin-top: 20px;
+  padding: 14px 20px;
+  display: inline-block;
+  background: var(--pink-soft);
+  border-radius: 10px;
+  cursor: pointer;
+  font-style: italic;
+}
+
+.bankrekening.fade-in {
+  animation: fadeIn .9s ease forwards;
+  cursor: default;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SLIDESHOW */
 .slideshow {
   position: relative;
   width: 100%;
-  height: 520px;              /* vaste hoogte = rust */
+  height: 520px;
   margin-top: 25px;
   border-radius: 14px;
-  overflow: hidden;           /* absoluut noodzakelijk */
+  overflow: hidden;
   background: #efe9e1;
   box-shadow: 0 14px 35px rgba(0,0,0,0.15);
 }
@@ -280,197 +204,105 @@ header .invite {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;        /* niets wordt afgesneden */
-  opacity: 1;
+  object-fit: contain;
   transition: opacity 1s ease-in-out;
 }
 
-
-/* Mobiel */
-@media (max-width: 768px) {
-  .slideshow img {
-    height: auto;
-    max-height: 70vh;
-    object-fit: contain;
-    background: #efe9e1;
-  }
-}
-@media (max-width: 768px) {
-  .slideshow img {
-    max-height: 65vh;
-  }
-}
-@media (max-width: 768px) {
-  .slideshow {
-    height: 300px;           
-  }
+/* MAPS */
+iframe {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
 }
 
-</script>
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  background: var(--blue);
+  color: var(--pink-soft);
+}
+
+/* MOBIEL */
+@media (max-width: 768px) {
+  header h1 { font-size: 3.2rem; }
+  .gift-grid { grid-template-columns: 1fr; }
+  .slideshow { height: 300px; }
+}
+</style>
+</head>
 
 <body>
 
 <header>
   <h1>Jordina & Joris</h1>
   <div class="date">17 · 10 · 26</div>
-
   <div class="invite">
     Arthur, Jinthe, Sitske & Lieze<br>
     nodigen jullie met veel liefde uit
   </div>
-
   <div id="countdown"></div>
 </header>
 
 <section>
 
-  <div class="info-box">
-    <h2>De grote dag</h2>
-    <p><strong>Burgerlijke trouw</strong><br>Gemeentehuis Borgerhout – Moorkensplein</p>
-    <p><strong>Avondfeest</strong><br>20u – ’t Oud Damstation</p>
-  </div>
+<div class="info-box">
+  <h2>De grote dag</h2>
+  <p><strong>Burgerlijke trouw</strong><br>Gemeentehuis Borgerhout – Moorkensplein</p>
+  <p><strong>Avondfeest</strong><br>20u – ’t Oud Damstation</p>
+</div>
 
 <div class="info-box">
   <h2>Inschrijven</h2>
-
   <div class="inschrijf-tekst">
-    <p>
-      <p style="text-align:center;">
-Graag voor <strong>12 september 2026</strong> laten weten of je aanwezig bent!
-    </p>
-
-    <p style="font-style: italic;">
-      <p style="text-align:center;">
-Laat je ook even iets weten als je niet aanwezig kan zijn.
-      Dit kan ook via onderstaande link.
-    </p>
+    <p>Graag voor <strong>12 september 2026</strong> laten weten of je aanwezig bent!</p>
+    <p style="font-style:italic;">Laat je ook even iets weten als je niet aanwezig kan zijn.</p>
   </div>
-
   <p style="text-align:center; margin-top:18px;">
-    <a 
-      href="https://forms.office.com/e/i4F9kp2pxm"
-      target="_blank"
-      class="inschrijf-link"
-    >
-      👉 <span>Inschrijven</span>
+    <a href="https://forms.office.com/e/i4F9kp2pxm" target="_blank" class="inschrijf-link">
+      👉 <span>Klik hier om je in te schrijven</span>
     </a>
   </p>
 </div>
 
-  </div>
+<div class="info-box gift-box">
+  <h2>Cadeau-idee</h2>
+  <p class="gift-intro">
+    💛 Jullie aanwezigheid is voor ons het allermooiste cadeau 💛<br>
+    Wie ons toch graag iets extra’s schenkt, kan mee onze huwelijksreis mogelijk maken.
+  </p>
 
-  <div class="info-box gift-box">
-    <h2>Cadeau-idee</h2>
-
-    <p class="gift-intro">
-      💛 Jullie aanwezigheid is voor ons het allermooiste cadeau 💛<br>
-      Wie ons toch graag iets extra’s schenkt, kan mee onze huwelijksreis mogelijk maken.
-    </p>
-
-    <div class="gift-grid">
-      <div class="gift-part london">
-        <h3>🎄 Londen in kerstsfeer</h3>
-        <p>    Het eerste deel van onze huwelijksreis brengt ons naar Londen,
-    waar we willen genieten van Christmas shopping, lichtjes en winterse gezelligheid
-</p>
-      </div>
-
-      <div class="gift-part sun">
-        <h3>☀️ Zon, rust & nietsdoen</h3>
-        <p>
-        Later trekken we richting de zon voor een heerlijk ontspannen
-        vakantie: even vertragen, genieten en vooral… niets moeten.
-</p>
-      </div>
+  <div class="gift-grid">
+    <div class="gift-part london">
+      <h3>🎄 Londen in kerstsfeer</h3>
+      <p>Christmas shopping, lichtjes en winterse gezelligheid.</p>
     </div>
-
-    <p style="margin-top:30px;">
-      Enveloppendoos op het feest of discreet via overschrijving:
-    </p>
-
-    <p class="bankrekening" onclick="toonRekening()">
-      🔒 Klik om rekeningnummer te bekijken
-    </p>
+    <div class="gift-part sun">
+      <h3>☀️ Zon & rust</h3>
+      <p>Ontspannen, vertragen en vooral… niets moeten.</p>
+    </div>
   </div>
+
+  <p class="bankrekening" onclick="toonRekening()">🔒 Klik om rekeningnummer te bekijken</p>
+</div>
+
 <div class="info-box">
   <h2>Locatie & parkeren</h2>
 
-  <p style="text-align:center; font-style:italic; margin-bottom:30px;">
-    Wil je weten waar we je graag zien verschijnen?
-  </p>
+  <h3>Gemeentehuis Borgerhout</h3>
+  <iframe src="https://www.google.com/maps?q=Gemeentehuis+Borgerhout+Moorkensplein&output=embed" height="320"></iframe>
 
-  <!-- Gemeentehuis -->
-  <div style="margin-bottom:40px;">
-    <h3 style="font-family:'Playfair Display', serif; font-size:1.3rem; margin-bottom:10px;">
-      Burgerlijke trouw – Gemeentehuis Borgerhout
-    </h3>
-
-    <p>
-      Moorkensplein, 2140 Borgerhout
-    </p>
-
-    <iframe
-      src="https://www.google.com/maps?q=Gemeentehuis+Borgerhout+Moorkensplein&output=embed"
-      height="350"
-      style="width:100%; border:none; border-radius:12px;">
-    </iframe>
-  </div>
-
-  <!-- Oud Damstation -->
-  <div>
-    <h3 style="font-family:'Playfair Display', serif; font-size:1.3rem; margin-bottom:10px;">
-      Avondfeest – ’t Oud Damstation
-    </h3>
-
-    <p>
-      Damplein, Antwerpen
-    </p>
-
-    <iframe
-      src="https://www.google.com/maps?q=Oud+DAMstation+Antwerpen&output=embed"
-      height="350"
-      style="width:100%; border:none; border-radius:12px;">
-    </iframe>
-  </div>
+  <h3 style="margin-top:30px;">’t Oud Damstation</h3>
+  <iframe src="https://www.google.com/maps?q=Oud+Damstation+Antwerpen&output=embed" height="320"></iframe>
 </div>
 
-  <div class="info-box">
+<div class="info-box">
   <h2>Herinneringen door de jaren heen</h2>
-
-  <p style="text-align:center; font-style:italic; margin-bottom:25px;">
-    💛 Een kleine reis door ons verhaal van 2015 tot nu 💛
-  </p>
-
   <div class="slideshow">
-    <img id="slideshowImage" src="foto1.jpg" alt="Herinneringen door de jaren heen">
+    <img id="slideshowImage" src="foto1.jpg" alt="Herinneringen">
   </div>
 </div>
-<script>
-  const slideshowImages = [];
-  for (let i = 1; i <= 99; i++) {
-    slideshowImages.push(`foto${i}.jpg`);
-  }
 
-  let currentSlide = 0;
-  const slideshowEl = document.getElementById("slideshowImage");
-
-  setInterval(() => {
-    if (!slideshowEl) return;
-
-   slideshowEl.style.opacity = 0;
-
-setTimeout(() => {
-  currentSlide = (currentSlide + 1) % slideshowImages.length;
-  slideshowEl.src = slideshowImages[currentSlide];
-}, 600);
-
-setTimeout(() => {
-  slideshowEl.style.opacity = 1;
-}, 700);
-
-</script>
-
-  
 </section>
 
 <footer>
@@ -478,15 +310,40 @@ setTimeout(() => {
 </footer>
 
 <script>
-  const weddingDate = new Date("2026-10-17").getTime();
-  const el = document.getElementById("countdown");
+function toonRekening() {
+  const el = document.querySelector('.bankrekening');
+  el.innerHTML = "💗 BE82 0359 7469 7568";
+  el.classList.add("fade-in");
+  el.onclick = null;
+}
 
-  setInterval(() => {
-    const now = new Date().getTime();
-    const days = Math.floor((weddingDate - now) / (1000*60*60*24));
-    el.innerHTML = days > 0 ? `${days} dagen te gaan` : "Vandaag vieren we de liefde 💗";
-  }, 1000);
+// Countdown
+const weddingDate = new Date("2026-10-17").getTime();
+const countdown = document.getElementById("countdown");
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const days = Math.floor((weddingDate - now) / (1000*60*60*24));
+  countdown.innerHTML = days > 0 ? `${days} dagen te gaan` : "Vandaag vieren we de liefde 💗";
+}, 1000);
+
+// Slideshow
+const slideshowImages = [];
+for (let i = 1; i <= 99; i++) slideshowImages.push(`foto${i}.jpg`);
+
+let currentSlide = 0;
+const slideshowEl = document.getElementById("slideshowImage");
+
+setInterval(() => {
+  slideshowEl.style.opacity = 0;
+  setTimeout(() => {
+    currentSlide = (currentSlide + 1) % slideshowImages.length;
+    slideshowEl.src = slideshowImages[currentSlide];
+    slideshowEl.style.opacity = 1;
+  }, 600);
+}, 3500);
 </script>
 
 </body>
 </html>
+
