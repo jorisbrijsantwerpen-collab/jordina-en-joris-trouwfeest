@@ -15,6 +15,8 @@
   --pink-soft: #f7dbe3;
   --box-bg: #faf7f3;
   --text-dark: #2a2a2a;
+  --gold: #c9a45c;
+  --gold-soft: rgba(201,164,92,0.45);
 }
 
 /* ALGEMEEN */
@@ -103,11 +105,25 @@ h3 {
 
 .info-box {
   background: var(--box-bg);
-  padding: 36px;
+  padding: 36px 36px 36px 42px; /* extra ruimte links */
   border-radius: 14px;
   box-shadow: 0 14px 35px rgba(0,0,0,0.14);
   margin-bottom: 55px;
+
+  border-left: 6px solid var(--gold-soft);
+  position: relative;
 }
+.info-box::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 0;
+  height: 45px;
+  width: 6px;
+  background: var(--gold);
+  border-radius: 0 4px 4px 0;
+}
+
 
 /* INSCHRIJVEN */
 .inschrijf-tekst p {
