@@ -169,6 +169,22 @@ h3 {
 .gift-part.sun {
   background: url('sun.png') center/cover no-repeat;
 }
+.gift-part h3 {
+  color: #f7dbe3;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.55);
+}
+
+.gift-part p {
+  text-shadow: 0 1px 6px rgba(0,0,0,0.45);
+}
+.gift-part {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gift-part:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 28px 55px rgba(0,0,0,0.35);
+}
 
 /* BANK */
 .bankrekening {
@@ -286,11 +302,17 @@ footer {
       <p>Ontspannen, vertragen en vooral… niets moeten.</p>
     </div>
   </div>
-<p style="margin-top:30px;"> 
-  <p> We voorzien een <strong>enveloppendoos</strong> op het avondfeest. Wie liever overschrijft, kan dat uiteraard ook. </p
+<div style="margin-top:30px; text-align:center;">
+  <p>
+    We voorzien een <strong>enveloppendoos</strong> op het avondfeest.  
+    Wie liever overschrijft, kan dat uiteraard ook.
+  </p>
 
-  <p class="bankrekening" onclick="toonRekening()">🔒 Klik om rekeningnummer te bekijken</p>
+  <p class="bankrekening" onclick="toonRekening()">
+    🔒 Klik om rekeningnummer te bekijken
+  </p>
 </div>
+
 
 <div class="info-box">
   <h2>Locatie & parkeren</h2>
