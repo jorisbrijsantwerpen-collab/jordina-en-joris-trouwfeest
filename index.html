@@ -314,6 +314,51 @@ footer {
   font-size: 0.95rem;
   color: #6b4f3f;
 }
+.after-wedding {
+  text-align: center;
+}
+
+/* Locked state */
+.after-locked {
+  padding: 40px 20px;
+  border-radius: 14px;
+  border: 2px dashed var(--gold-soft);
+  background: rgba(255,255,255,0.6);
+  animation: softFade 1.2s ease;
+}
+
+.lock-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.after-locked .after-intro {
+  font-style: italic;
+  color: #6b4f3f;
+}
+
+/* Unlocked state */
+.after-unlocked {
+  display: none;
+  animation: unlockFade 1.4s ease forwards;
+}
+
+/* Animaties */
+@keyframes unlockFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
 </style>
 </head>
@@ -404,19 +449,23 @@ footer {
 <div class="info-box after-wedding">
   <h2>Na het ja-woord</h2>
 
-  <p class="after-intro">
-    ✨ Onze dag beleefd, vastgelegd en gekoesterd ✨<br>
-    Na het trouwfeest delen we hier met veel liefde enkele herinneringen.
-  </p>
-
-  <div class="after-placeholder">
-    📸 After wedding foto’s volgen binnenkort
+  <!-- LOCKED CONTENT -->
+  <div id="afterLocked" class="after-locked">
+    <div class="lock-icon">🔒</div>
+    <p class="after-intro">
+      Onze herinneringen blijven nog even privé.<br>
+      Na <strong>17 oktober 2026</strong> openen we dit met veel liefde.
+    </p>
   </div>
 
-  <p class="after-note">
-    Kom zeker nog eens terug na <strong>17 oktober 2026</strong>.
-  </p>
+  <!-- UNLOCKED CONTENT -->
+  <div id="afterUnlocked" class="after-unlocked">
+    <div class="slideshow">
+      <img id="afterSlideshowImage" src="after1.jpg" alt="After wedding">
+    </div>
+  </div>
 </div>
+
 
 </section>
 
@@ -457,6 +506,37 @@ setInterval(() => {
     slideshowEl.style.opacity = 1;
   }, 600);
 }, 3500);
+</script>
+<script>
+// AFTER WEDDING LOCK
+const unlockDate = new Date("2026-10-17T00:00:00").getTime();
+const now = new Date().getTime();
+
+const locked = document.getElementById("afterLocked");
+const unlocked = document.getElementById("afterUnlocked");
+
+if (now >= unlockDate) {
+  locked.style.display = "none";
+  unlocked.style.display = "block";
+}
+
+/* AFTER WEDDING SLIDESHOW */
+const afterImages = [];
+for (let i = 1; i <= 50; i++) afterImages.push(`after${i}.jpg`);
+
+let afterIndex = 0;
+const afterImg = document.getElementById("afterSlideshowImage");
+
+setInterval(() => {
+  if (!afterImg || unlocked.style.display !== "block") return;
+
+  afterImg.style.opacity = 0;
+  setTimeout(() => {
+    afterIndex = (afterIndex + 1) % afterImages.length;
+    afterImg.src = afterImages[afterIndex];
+    afterImg.style.opacity = 1;
+  }, 600);
+}, 3600);
 </script>
 
 </body>
