@@ -136,7 +136,29 @@ h3 {
   color: #6b4f3f;
   font-weight: 600;
   text-decoration: none;
+  display: inline-block;
+
+  /* Optie 1 – zachte “ademhaling” */
+  animation: softPulse 4.5s ease-in-out infinite;
 }
+
+/* Optie 2 – zachte gouden gloed bij hover */
+.inschrijf-link:hover {
+  box-shadow: 0 0 0 6px rgba(215, 183, 125, 0.35);
+  border-radius: 10px;
+  transition: box-shadow 0.4s ease;
+}
+
+/* Animatie definitie */
+@keyframes softPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
 
 .inschrijf-link span {
   text-decoration: underline;
