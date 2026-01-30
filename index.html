@@ -359,6 +359,13 @@ footer {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+.after-countdown {
+  margin-top: 22px;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #6b4f3f;
+  letter-spacing: 0.5px;
+}
 
 </style>
 </head>
@@ -450,13 +457,19 @@ footer {
   <h2>Na het ja-woord</h2>
 
   <!-- LOCKED CONTENT -->
-  <div id="afterLocked" class="after-locked">
-    <div class="lock-icon">🔒</div>
-    <p class="after-intro">
-      Onze herinneringen blijven nog even privé.<br>
-      Na <strong>17 oktober 2026</strong> openen we dit met veel liefde.
-    </p>
-  </div>
+<div id="afterLocked" class="after-locked">
+  <div class="lock-icon">🔒</div>
+
+  <p class="after-intro">
+    <em>Onze dag beleefd, vastgelegd en gekoesterd</em><br>
+    <em>Na het trouwfeest delen we hier met veel liefde enkele herinneringen</em>
+  </p>
+
+  <p id="afterCountdown" class="after-countdown">
+    Nog <strong>—</strong> dagen gesloten
+  </p>
+</div>
+
 
   <!-- UNLOCKED CONTENT -->
   <div id="afterUnlocked" class="after-unlocked">
@@ -508,16 +521,20 @@ setInterval(() => {
 }, 3500);
 </script>
 <script>
-// AFTER WEDDING LOCK
+// AFTER WEDDING LOCK + COUNTDOWN
 const unlockDate = new Date("2026-10-17T00:00:00").getTime();
 const now = new Date().getTime();
 
 const locked = document.getElementById("afterLocked");
 const unlocked = document.getElementById("afterUnlocked");
+const countdownEl = document.getElementById("afterCountdown");
 
 if (now >= unlockDate) {
   locked.style.display = "none";
   unlocked.style.display = "block";
+} else {
+  const daysLeft = Math.ceil((unlockDate - now) / (1000 * 60 * 60 * 24));
+  countdownEl.innerHTML = `Nog <strong>${daysLeft}</strong> dagen gesloten`;
 }
 
 /* AFTER WEDDING SLIDESHOW */
