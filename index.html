@@ -545,6 +545,7 @@ setInterval(() => {
 }, 3500);
 </script>
 <script>
+  
 // AFTER WEDDING LOCK + LIVE COUNTDOWN
 const unlockDate = new Date("2026-10-17T00:00:00").getTime();
 
@@ -576,10 +577,7 @@ function updateAfterCountdown() {
 
 updateAfterCountdown();
 setInterval(updateAfterCountdown, 1000);
-</script>
-
-
-/* AFTER WEDDING SLIDESHOW */
+// AFTER WEDDING SLIDESHOW
 const afterImages = [];
 for (let i = 1; i <= 50; i++) afterImages.push(`after${i}.jpg`);
 
@@ -596,6 +594,7 @@ setInterval(() => {
     afterImg.style.opacity = 1;
   }, 600);
 }, 3600);
+  
 </script>
 
 </body>
