@@ -311,6 +311,7 @@ footer {
   font-size: 1.05rem;
   letter-spacing: 1px;
   background: rgba(255,255,255,0.6);
+  text-align: center;
 }
 
 .after-note {
@@ -496,10 +497,20 @@ footer {
 
   <!-- UNLOCKED CONTENT -->
   <div id="afterUnlocked" class="after-unlocked">
-    <div class="slideshow">
-      <img id="afterSlideshowImage" src="after1.jpg" alt="After wedding">
-    </div>
+
+  <!-- FALLBACK -->
+  <div id="afterFallback" class="after-placeholder">
+    ✨ Onze herinneringen worden momenteel met zorg uitgekozen.<br>
+    Binnenkort delen we ze hier met veel liefde 💛
   </div>
+
+  <!-- SLIDESHOW -->
+  <div id="afterSlideshow" class="slideshow" style="display:none;">
+    <img id="afterSlideshowImage" src="after1.jpg" alt="After wedding">
+  </div>
+
+</div>
+
 </div>
 
 
