@@ -604,7 +604,27 @@ setInterval(() => {
     afterImg.style.opacity = 1;
   }, 600);
 }, 3600);
-  
+  // AFTER WEDDING – FALLBACK CHECK
+const afterSlideshow = document.getElementById("afterSlideshow");
+const afterFallback = document.getElementById("afterFallback");
+
+function checkAfterImages() {
+  const testImg = new Image();
+  testImg.src = "after1.jpg";
+
+  testImg.onload = () => {
+    afterFallback.style.display = "none";
+    afterSlideshow.style.display = "block";
+  };
+
+  testImg.onerror = () => {
+    afterFallback.style.display = "block";
+    afterSlideshow.style.display = "none";
+  };
+}
+
+checkAfterImages();
+
 </script>
 
 </body>
