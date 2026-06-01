@@ -34,48 +34,8 @@ header {
   padding: 180px 20px 160px;
   text-align: center;
   color: var(--pink);
-}
-
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(15,74,117,0.55),
-    rgba(15,74,117,0.75)
-  );
-  z-index: 1;
-}
-
-header * {
-  position: relative;
-  z-index: 2;
-}
-
-header h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 4.6rem;
-  letter-spacing: 4px;
-  margin-bottom: 14px;
-  text-shadow: 0 6px 18px rgba(0,0,0,0.45);
-}
-
-header .date {
-  font-size: 1.3rem;
-  letter-spacing: 3px;
-  color: var(--pink-soft);
-}
-
-header .invite {
-  margin-top: 26px;
-  font-style: italic;
-  color: #ffffff;
-  line-height: 1.6;
-}
-  header {
   margin-bottom: 120px;
 }
-
 
 #countdown {
   margin-top: 35px;
@@ -279,12 +239,9 @@ iframe {
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 22px 40px;
+  padding: 20px 40px;
   background: var(--blue);
   color: var(--pink-soft);
-}
-footer {
-  padding-top: 20px;
 }
 
 /* MOBIEL */
@@ -317,9 +274,6 @@ footer {
   margin-top: 22px;
   font-size: 0.95rem;
   color: #6b4f3f;
-}
-.after-wedding {
-  text-align: center;
 }
 
 /* Locked state */
@@ -462,20 +416,6 @@ footer {
 
 @media (max-width:768px) {
 
-</style>
-</head>
-
-<body>
-
-<header>
-  <h1>Jordina & Joris</h1>
-  <div class="date">17 · 10 · 26</div>
-  <div class="invite">
-    Arthur, Jinthe, Sitske & Lieze<br>
-    nodigen jullie met veel liefde uit
-  </div>
-  <div id="countdown"></div>
-</header>
   .timeline::before {
     left: 24px;
   }
@@ -497,7 +437,22 @@ footer {
     padding: 12px 15px;
   }
 }
-<section>
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Jordina & Joris</h1>
+  <div class="date">17 · 10 · 26</div>
+  <div class="invite">
+    Arthur, Jinthe, Sitske & Lieze<br>
+    nodigen jullie met veel liefde uit
+  </div>
+  <div id="countdown"></div>
+</header>
+
+  <section>
 
 <div class="info-box">
   <h2>De grote dag</h2>
@@ -599,8 +554,6 @@ footer {
     </p>
   </div>
 </div>
-
-
 
 <div class="info-box">
   <h2>Locatie & parkeren</h2>
