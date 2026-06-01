@@ -297,6 +297,17 @@ h3 {
   transition: opacity 1s ease-in-out;
 }
 
+  .locatie {
+  margin-bottom: 40px;
+}
+
+.locatie:last-child {
+  margin-bottom: 0;
+}
+
+.locatie h3 {
+  margin-bottom: 12px;
+}
 /* MAPS */
 iframe {
   width: 100%;
@@ -504,6 +515,9 @@ footer {
   .timeline-content {
     padding: 12px 15px;
   }
+.hidden {
+  display: none !important;
+}
 }
 </style>
 </head>
@@ -626,11 +640,25 @@ footer {
 <div class="info-box">
   <h2>Locatie & parkeren</h2>
 
-  <h3>Gemeentehuis Borgerhout</h3>
-  <iframe src="https://www.google.com/maps?q=Gemeentehuis+Borgerhout+Moorkensplein&output=embed" height="320"></iframe>
+  <div class="locatie burgerlijk">
+    <h3>Gemeentehuis Borgerhout</h3>
+    <iframe src="https://www.google.com/maps?q=Gemeentehuis+Borgerhout+Moorkensplein&output=embed" height="320"></iframe>
+  </div>
 
-  <h3 style="margin-top:30px;">’t Oud Damstation</h3>
-  <iframe src="https://www.google.com/maps?q=Oud+Damstation+Antwerpen&output=embed" height="320"></iframe>
+  <div class="locatie receptie">
+    <h3>Café Mombassa</h3>
+    <iframe src="https://www.google.com/maps?q=Cafe+Mombassa+Borgerhout&output=embed" height="320"></iframe>
+  </div>
+
+  <div class="locatie diner">
+    <h3>Pepper & Mint</h3>
+    <iframe src="https://www.google.com/maps?q=Pepper+Mint+Borsbeekstraat+115+Borgerhout&output=embed" height="320"></iframe>
+  </div>
+
+  <div class="locatie avondfeest">
+    <h3>'t Oud Damstation</h3>
+    <iframe src="https://www.google.com/maps?q=Oud+Damstation+Antwerpen&output=embed" height="320"></iframe>
+  </div>
 </div>
 
 <div class="info-box">
