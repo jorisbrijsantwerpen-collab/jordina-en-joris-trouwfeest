@@ -23,7 +23,18 @@
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background: var(--blue);
+
+  background:
+    linear-gradient(
+      rgba(15,74,117,0.82),
+      rgba(15,74,117,0.88)
+    ),
+    url('20250821_204526.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
   color: var(--text-dark);
 }
 
@@ -36,7 +47,30 @@ header {
   color: var(--pink);
   margin-bottom: 120px;
 }
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.6rem;
+  letter-spacing: 4px;
+  margin-bottom: 14px;
 
+  color: white;
+
+  text-shadow:
+    0 0 2px var(--gold),
+    0 0 6px var(--gold),
+    0 2px 12px rgba(0,0,0,0.7);
+}
+
+header .date,
+header .invite,
+#countdown {
+  color: white;
+
+  text-shadow:
+    0 0 2px var(--gold),
+    0 0 5px rgba(201,164,92,0.8),
+    0 2px 8px rgba(0,0,0,0.7);
+}
 #countdown {
   margin-top: 35px;
   font-style: italic;
