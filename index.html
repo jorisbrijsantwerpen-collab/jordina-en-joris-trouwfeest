@@ -405,7 +405,99 @@ footer {
   </div>
   <div id="countdown"></div>
 </header>
+/* TIJDSLIJN */
 
+.timeline {
+  position: relative;
+  margin-top: 20px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 80px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 25px;
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 72px;
+  top: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid white;
+  box-shadow: 0 0 12px rgba(201,164,92,0.4);
+}
+
+.timeline-time {
+  width: 70px;
+  font-weight: bold;
+  color: var(--blue);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.timeline-content {
+  flex: 1;
+  background: rgba(255,255,255,0.45);
+  padding: 14px 18px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.timeline-content h3 {
+  margin: 0 0 6px;
+  color: var(--blue);
+}
+
+.timeline-content p {
+  margin: 0;
+}
+
+/* Mobiel */
+
+@media (max-width:768px) {
+
+  .timeline::before {
+    left: 24px;
+  }
+
+  .timeline-item {
+    gap: 15px;
+  }
+
+  .timeline-item::before {
+    left: 16px;
+  }
+
+  .timeline-time {
+    width: 50px;
+    font-size: 0.9rem;
+  }
+
+  .timeline-content {
+    padding: 12px 15px;
+  }
+}
 <section>
 
 <div class="info-box">
