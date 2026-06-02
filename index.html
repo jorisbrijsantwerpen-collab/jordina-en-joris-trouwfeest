@@ -326,6 +326,10 @@ footer {
   color: var(--pink-soft);
 }
 
+.hidden {
+  display: none !important;
+}
+  
 /* MOBIEL */
 @media (max-width: 768px) {
   header h1 { font-size: 3.2rem; }
@@ -523,15 +527,181 @@ footer {
     margin-left: 12px;  
     }
 }
+.trouw-only,
+.feest-only,
+.suite-only,
+.receptie,
+.diner,
+.avondfeest {
+  display: none;
+}  
 .hidden {
   display: none !important;
 }
 }
 </style>
 </head>
+<script>
 
+function showElements(selector) {
+  document.querySelectorAll(selector).forEach(el => {
+    el.style.display = "";
+  });
+}
+
+function checkCode() {
+
+  const code =
+    document.getElementById("guestCode")
+    .value
+    .trim()
+    .toLowerCase();
+
+  if(code === "trouw") {
+
+    showElements(".receptie");
+    showElements(".trouw-only");
+
+  }
+
+  else if(code === "feest") {
+
+    showElements(".avondfeest");
+    showElements(".feest-only");
+
+  }
+
+  else if(code === "suite") {
+
+    showElements(".receptie");
+    showElements(".diner");
+    showElements(".avondfeest");
+
+    showElements(".trouw-only");
+    showElements(".feest-only");
+    showElements(".suite-only");
+
+  }
+
+}
+function checkCode() {
+
+  const code = document
+    .getElementById("guestCode")
+    .value
+    .trim()
+    .toLowerCase();
+
+  const inschrijven = document.getElementById("inschrijven");
+
+  const recepties =
+    document.querySelectorAll(".receptie");
+
+  const diners =
+    document.querySelectorAll(".diner");
+
+  const avondfeest =
+    document.querySelectorAll(".avondfeest");
+
+  const mapMombassa =
+    document.getElementById("mapMombassa");
+
+  const mapPepper =
+    document.getElementById("mapPepper");
+
+  const mapDamstation =
+    document.getElementById("mapDamstation");
+
+  // eerst alles verbergen
+
+  inschrijven.classList.add("hidden");
+
+  recepties.forEach(el =>
+    el.classList.add("hidden")
+  );
+
+  diners.forEach(el =>
+    el.classList.add("hidden")
+  );
+
+  avondfeest.forEach(el =>
+    el.classList.add("hidden")
+  );
+
+  mapMombassa.classList.add("hidden");
+  mapPepper.classList.add("hidden");
+  mapDamstation.classList.add("hidden");
+
+  // TROUW
+
+  if(code === "trouw") {
+
+    inschrijven.classList.remove("hidden");
+
+    recepties.forEach(el =>
+      el.classList.remove("hidden")
+    );
+
+    mapMombassa.classList.remove("hidden");
+  }
+
+  // FEEST
+
+  if(code === "feest") {
+
+    inschrijven.classList.remove("hidden");
+
+    avondfeest.forEach(el =>
+      el.classList.remove("hidden")
+    );
+
+    mapDamstation.classList.remove("hidden");
+  }
+
+  // SUITE
+
+  if(code === "suite") {
+
+    inschrijven.classList.remove("hidden");
+
+    recepties.forEach(el =>
+      el.classList.remove("hidden")
+    );
+
+    diners.forEach(el =>
+      el.classList.remove("hidden")
+    );
+
+    avondfeest.forEach(el =>
+      el.classList.remove("hidden")
+    );
+
+    mapMombassa.classList.remove("hidden");
+    mapPepper.classList.remove("hidden");
+    mapDamstation.classList.remove("hidden");
+  }
+}
+  
+</script>
+  
 <body>
+<div id="loginBox" style="
+  text-align:center;
+  padding:20px;
+  background:rgba(255,255,255,0.85);
+">
+  <input
+    type="password"
+    id="guestCode"
+    placeholder="Toegangscode"
+    style="padding:10px 15px;border-radius:8px;border:1px solid #ccc;"
+  >
 
+  <button onclick="checkCode()"
+    style="padding:10px 15px;margin-left:8px;border:none;border-radius:8px;">
+    Open
+  </button>
+</div>
 <header>
   <h1>Jordina & Joris</h1>
   <div class="date">17 · 10 · 26</div>
@@ -548,7 +718,7 @@ footer {
   <h2>De grote dag</h2>
 
   <div class="timeline">
-
+<div class="timeline-item burgerlijk">
     <div class="timeline-item everyone">
       <div class="timeline-time">11u30</div>
       <div class="timeline-content">
@@ -557,7 +727,7 @@ footer {
       </div>
     </div>
 
-    <div class="timeline-item receptie">
+    <div class="timeline-item receptie hidden">
       <div class="timeline-time">12u00</div>
       <div class="timeline-content">
         <h3>Drankje</h3>
@@ -565,7 +735,7 @@ footer {
       </div>
     </div>
 
-    <div class="timeline-item diner">
+    <div class="timeline-item diner hidden">
       <div class="timeline-time">15u00</div>
       <div class="timeline-content">
         <h3>Eten</h3>
@@ -573,7 +743,7 @@ footer {
       </div>
     </div>
 
-    <div class="timeline-item avondfeest">
+    <div class="timeline-item avondfeest hidden">
       <div class="timeline-time">20u00</div>
       <div class="timeline-content">
         <h3>Avondfeest & receptie</h3>
@@ -599,10 +769,50 @@ footer {
 
   </div>
 </div>
-
 <div class="info-box">
-  <h2>Inschrijven</h2>
+  <h2>Toegangscode</h2>
 
+  <p style="text-align:center;">
+    Voer je persoonlijke code in om jouw uitnodiging te bekijken.
+  </p>
+
+  <div style="text-align:center;">
+    <input
+      type="password"
+      id="guestCode"
+      placeholder="Code invoeren"
+      style="padding:12px; border-radius:8px; border:none;"
+    >
+
+    <button onclick="checkCode()"
+      style="padding:12px 18px; margin-left:10px;">
+      OK
+    </button>
+  </div>
+</div>
+
+  <div class="info-box trouw-only" id="inschrijvenTrouw">
+  <h2>Inschrijven receptie</h2>
+<div class="info-box feest-only" id="inschrijvenFeest">
+  <h2>Inschrijven avondfeest</h2>
+
+  <p style="text-align:center;">
+    <a href="LINK_FEEST">
+      Klik hier om je in te schrijven
+    </a>
+  </p>
+</div>
+
+  <div class="info-box suite-only" id="inschrijvenSuite">
+  <h2>Inschrijven volledige dag</h2>
+
+  <p style="text-align:center;">
+    <a href="LINK_SUITE">
+      Klik hier om je in te schrijven
+    </a>
+  </p>
+</div>
+  
   <div class="inschrijf-tekst">
     <p>Graag voor <strong>12 september 2026</strong> laten weten of je aanwezig bent!</p>
     <p style="font-style:italic;">Laat je ook even iets weten als je niet aanwezig kan zijn.</p>
@@ -664,22 +874,22 @@ footer {
 <div class="info-box">
   <h2>Locatie & parkeren</h2>
 
-  <div class="locatie burgerlijk">
+<div class="locatie burgerlijk" id="mapBurgerlijk">
     <h3>Gemeentehuis Borgerhout</h3>
     <iframe src="https://www.google.com/maps?q=Gemeentehuis+Borgerhout+Moorkensplein&output=embed" height="320"></iframe>
   </div>
 
-  <div class="locatie receptie">
+<div class="locatie receptie hidden" id="mapMombassa">
     <h3>Café Mombassa</h3>
     <iframe src="https://www.google.com/maps?q=Cafe+Mombassa+Borgerhout&output=embed" height="320"></iframe>
   </div>
 
-  <div class="locatie diner">
+  <div class="locatie diner hidden" id="mapPepper">
     <h3>Pepper & Mint</h3>
     <iframe src="https://www.google.com/maps?q=Pepper+Mint+Borsbeekstraat+115+Borgerhout&output=embed" height="320"></iframe>
   </div>
 
-  <div class="locatie avondfeest">
+  <div class="locatie avondfeest hidden" id="mapDamstation">
     <h3>'t Oud Damstation</h3>
     <iframe src="https://www.google.com/maps?q=Oud+Damstation+Antwerpen&output=embed" height="320"></iframe>
   </div>
