@@ -47,6 +47,25 @@ header {
   color: var(--pink);
   margin-bottom: 120px;
 }
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(15,74,117,0.25),
+      rgba(15,74,117,0.45)
+    );
+
+  z-index: 1;
+}
+
+header * {
+  position: relative;
+  z-index: 2;
+}
 header h1 {
   font-family: 'Playfair Display', serif;
   font-size: 4.6rem;
