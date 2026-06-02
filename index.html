@@ -132,10 +132,18 @@ h3 {
 }
   
 .info-box {
-  background: linear-gradient(180deg, var(--pink-soft), var(--box-bg));
-  padding: 36px 36px 36px 42px; /* extra ruimte links */
-  border-radius: 14px;
-  box-shadow: 0 14px 35px rgba(0,0,0,0.14);
+  background: rgba(255,255,255,0.78);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  padding: 36px 36px 36px 42px;
+  border-radius: 18px;
+
+  box-shadow:
+    0 14px 35px rgba(0,0,0,0.18),
+    0 0 0 1px rgba(255,255,255,0.25);
+
   margin-bottom: 55px;
 
   border-left: 6px solid var(--gold);
