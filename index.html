@@ -591,30 +591,72 @@ function checkCode() {
     .trim()
     .toLowerCase();
 
- function hideAllProtected() {
+function hideAllProtected() {
+
   document.querySelectorAll(
-    '.trouw-item, .feest-item, .suite-item, .registratie-trouw, .registratie-feest, .registratie-suite'
+    '.trouw-item, .feest-item, .suite-item'
   ).forEach(el => {
     el.classList.add('hidden');
   });
+
+  document.getElementById('inschrijvenTrouw')
+    .classList.add('hidden');
+
+  document.getElementById('inschrijvenFeest')
+    .classList.add('hidden');
+
+  document.getElementById('inschrijvenSuite')
+    .classList.add('hidden');
 }
+
+function showItems(selector) {
+  document.querySelectorAll(selector).forEach(el => {
+    el.classList.remove('hidden');
+  });
+}
+
+function checkCode() {
+
+  const code = document
+    .getElementById('guestCode')
+    .value
+    .trim()
+    .toLowerCase();
+
+  hideAllProtected();
+
   switch(code) {
 
     case 'trouw':
+
       showItems('.trouw-item');
-      showItems('.registratie-trouw');
+
+      document
+        .getElementById('inschrijvenTrouw')
+        .classList.remove('hidden');
+
       break;
 
     case 'feest':
+
       showItems('.feest-item');
-      showItems('.registratie-feest');
+
+      document
+        .getElementById('inschrijvenFeest')
+        .classList.remove('hidden');
+
       break;
 
     case 'suite':
+
       showItems('.trouw-item');
       showItems('.feest-item');
       showItems('.suite-item');
-      showItems('.registratie-suite');
+
+      document
+        .getElementById('inschrijvenSuite')
+        .classList.remove('hidden');
+
       break;
 
     default:
@@ -690,7 +732,9 @@ function checkCode() {
     </div>
   </div>
 
+  </div>
 </div>
+    
 <div class="info-box code-box">
   <h2>Uitnodiging ontgrendelen</h2>
 
