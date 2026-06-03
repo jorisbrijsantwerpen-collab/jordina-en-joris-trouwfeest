@@ -583,32 +583,18 @@ footer {
 </head>
 <script>
 
-function showElements(selector) {
-  document.querySelectorAll(selector).forEach(el => {
-    el.style.display = "";
+function hideAllProtected() {
+  document.querySelectorAll(
+    '.trouw-item, .feest-item, .suite-item'
+  ).forEach(el => {
+    el.classList.add('hidden');
   });
 }
 
-function hideAllProtected() {
-
-  document
-    .querySelectorAll(
-      '.trouw-item, .feest-item, .suite-item'
-    )
-    .forEach(el => {
-      el.classList.add('hidden');
-    });
-
-}
-
-function showItems(selector) {
-
-  document
-    .querySelectorAll(selector)
-    .forEach(el => {
-      el.classList.remove('hidden');
-    });
-
+function showItems(className) {
+  document.querySelectorAll(className).forEach(el => {
+    el.classList.remove('hidden');
+  });
 }
 
 function checkCode() {
@@ -621,32 +607,24 @@ function checkCode() {
 
   hideAllProtected();
 
-  if (code === 'trouw') {
+  switch(code) {
 
-    showItems('.trouw-item');
+    case 'trouw':
+      showItems('.trouw-item');
+      break;
 
-  }
+    case 'feest':
+      showItems('.feest-item');
+      break;
 
-  else if (code === 'feest') {
+    case 'suite':
+      showItems('.trouw-item');
+      showItems('.feest-item');
+      showItems('.suite-item');
+      break;
 
-    showItems('.feest-item');
-
-  }
-
-  else if (code === 'suite') {
-
-    showItems('.trouw-item');
-    showItems('.feest-item');
-    showItems('.suite-item');
-
-  }
-
-  else {
-
-    alert(
-      'Deze code werd niet herkend.'
-    );
-
+    default:
+      alert('Deze code werd niet herkend.');
   }
 }
   
