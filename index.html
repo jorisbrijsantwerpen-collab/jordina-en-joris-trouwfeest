@@ -599,41 +599,6 @@ function showElements(selector) {
 
 function checkCode() {
 
-  const code =
-    document.getElementById("guestCode")
-    .value
-    .trim()
-    .toLowerCase();
-
-  if(code === "trouw") {
-
-    showElements(".receptie");
-    showElements(".trouw-only");
-
-  }
-
-  else if(code === "feest") {
-
-    showElements(".avondfeest");
-    showElements(".feest-only");
-
-  }
-
-  else if(code === "suite") {
-
-    showElements(".receptie");
-    showElements(".diner");
-    showElements(".avondfeest");
-
-    showElements(".trouw-only");
-    showElements(".feest-only");
-    showElements(".suite-only");
-
-  }
-
-}
-function checkCode() {
-
   const code = document
     .getElementById("guestCode")
     .value
