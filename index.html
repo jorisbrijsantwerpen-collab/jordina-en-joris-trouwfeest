@@ -575,14 +575,7 @@ footer {
     margin-left: 12px;  
     }
 }
-.trouw-only,
-.feest-only,
-.suite-only,
-.receptie,
-.diner,
-.avondfeest {
-  display: none;
-}  
+
 .hidden {
   display: none !important;
 }
@@ -597,95 +590,64 @@ function showElements(selector) {
   });
 }
 
+function hideAllProtected() {
+
+  document
+    .querySelectorAll(
+      '.trouw-item, .feest-item, .suite-item'
+    )
+    .forEach(el => {
+      el.classList.add('hidden');
+    });
+
+}
+
+function showItems(selector) {
+
+  document
+    .querySelectorAll(selector)
+    .forEach(el => {
+      el.classList.remove('hidden');
+    });
+
+}
+
 function checkCode() {
 
   const code = document
-    .getElementById("guestCode")
+    .getElementById('guestCode')
     .value
     .trim()
     .toLowerCase();
 
-    const recepties =
-    document.querySelectorAll(".receptie");
+  hideAllProtected();
 
-  const diners =
-    document.querySelectorAll(".diner");
+  if (code === 'trouw') {
 
-  const avondfeest =
-    document.querySelectorAll(".avondfeest");
+    showItems('.trouw-item');
 
-  const mapMombassa =
-    document.getElementById("mapMombassa");
-
-  const mapPepper =
-    document.getElementById("mapPepper");
-
-  const mapDamstation =
-    document.getElementById("mapDamstation");
-
-  // eerst alles verbergen
-
-   recepties.forEach(el =>
-    el.classList.add("hidden")
-  );
-
-  diners.forEach(el =>
-    el.classList.add("hidden")
-  );
-
-  avondfeest.forEach(el =>
-    el.classList.add("hidden")
-  );
-
-  mapMombassa.classList.add("hidden");
-  mapPepper.classList.add("hidden");
-  mapDamstation.classList.add("hidden");
-
-  // TROUW
-
-  if(code === "trouw") {
-
-       recepties.forEach(el =>
-      el.classList.remove("hidden")
-    );
-
-    mapMombassa.classList.remove("hidden");
   }
 
-  // FEEST
+  else if (code === 'feest') {
 
-  if(code === "feest") {
+    showItems('.feest-item');
 
-    inschrijven.classList.remove("hidden");
-
-    avondfeest.forEach(el =>
-      el.classList.remove("hidden")
-    );
-
-    mapDamstation.classList.remove("hidden");
   }
 
-  // SUITE
+  else if (code === 'suite') {
 
-  if(code === "suite") {
+    showItems('.trouw-item');
+    showItems('.feest-item');
+    showItems('.suite-item');
 
-    inschrijven.classList.remove("hidden");
+  }
 
-    recepties.forEach(el =>
-      el.classList.remove("hidden")
+  else {
+
+    alert(
+      'Deze code werd niet herkend.'
     );
 
-    diners.forEach(el =>
-      el.classList.remove("hidden")
-    );
-
-    avondfeest.forEach(el =>
-      el.classList.remove("hidden")
-    );
-
-    mapMombassa.classList.remove("hidden");
-    mapPepper.classList.remove("hidden");
-    mapDamstation.classList.remove("hidden");
   }
 }
   
@@ -718,7 +680,7 @@ function checkCode() {
       </div>
     </div>
 
-    <div class="timeline-item receptie hidden">
+    <div class="timeline-item hidden trouw-item">
       <div class="timeline-time">12u00</div>
       <div class="timeline-content">
         <h3>Drankje</h3>
@@ -726,7 +688,7 @@ function checkCode() {
       </div>
     </div>
 
-    <div class="timeline-item diner hidden">
+  <div class="timeline-item hidden suite-item">
       <div class="timeline-time">15u00</div>
       <div class="timeline-content">
         <h3>Eten</h3>
@@ -734,7 +696,7 @@ function checkCode() {
       </div>
     </div>
 
-    <div class="timeline-item avondfeest hidden">
+    <div class="timeline-item hidden feest-item">
       <div class="timeline-time">20u00</div>
       <div class="timeline-content">
         <h3>Avondfeest & receptie</h3>
@@ -742,7 +704,7 @@ function checkCode() {
       </div>
     </div>
 
-    <div class="timeline-item avondfeest">
+    <div class="timeline-item hidden feest-item">
       <div class="timeline-time">21u00</div>
       <div class="timeline-content">
         <h3>Openingsdans</h3>
@@ -750,7 +712,7 @@ function checkCode() {
       </div>
     </div>
 
-    <div class="timeline-item avondfesst hidden">
+  <div class="timeline-item hidden feest-item">
   <div class="timeline-time">03u00</div>
   <div class="timeline-content">
     <h3>Einde van onze fijne dag</h3>
@@ -780,23 +742,29 @@ function checkCode() {
   </div>
 </div>
 
-  <div class="info-box trouw-only" id="inschrijvenTrouw">
+<div class="info-box hidden trouw-item">
   <h2>Inschrijven receptie</h2>
-<div class="info-box feest-only" id="inschrijvenFeest">
-  <h2>Inschrijven avondfeest</h2>
 
   <p style="text-align:center;">
-    <a href="LINK_FEEST">
+    <a href="https://forms.office.com/e/X7c1SDGRR4">
       Klik hier om je in te schrijven
     </a>
   </p>
 </div>
+<div class="info-box hidden feest-item">
+  <h2>Inschrijven avondfeest</h2>
 
-  <div class="info-box suite-only" id="inschrijvenSuite">
+  <p style="text-align:center;">
+    <a href="https://forms.office.com/e/i4F9kp2pxm">
+      Klik hier om je in te schrijven
+    </a>
+  </p>
+</div>
+  <div class="info-box hidden suite-item">
   <h2>Inschrijven volledige dag</h2>
 
   <p style="text-align:center;">
-    <a href="LINK_SUITE">
+    <a href="https://forms.office.com/e/dE9ZvN8ZnT">
       Klik hier om je in te schrijven
     </a>
   </p>
@@ -868,17 +836,17 @@ function checkCode() {
     <iframe src="https://www.google.com/maps?q=Gemeentehuis+Borgerhout+Moorkensplein&output=embed" height="320"></iframe>
   </div>
 
-<div class="locatie receptie hidden" id="mapMombassa">
+<div id="mapMombassa" class="locatie hidden trouw-item">
     <h3>Café Mombassa</h3>
     <iframe src="https://www.google.com/maps?q=Cafe+Mombassa+Borgerhout&output=embed" height="320"></iframe>
   </div>
 
-  <div class="locatie diner hidden" id="mapPepper">
+  <div id="mapPepper" class="locatie hidden suite-item">
     <h3>Pepper & Mint</h3>
     <iframe src="https://www.google.com/maps?q=Pepper+Mint+Borsbeekstraat+115+Borgerhout&output=embed" height="320"></iframe>
   </div>
 
-  <div class="locatie avondfeest hidden" id="mapDamstation">
+ <div id="mapDamstation" class="locatie hidden feest-item">
     <h3>'t Oud Damstation</h3>
     <iframe src="https://www.google.com/maps?q=Oud+Damstation+Antwerpen&output=embed" height="320"></iframe>
   </div>
