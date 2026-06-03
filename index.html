@@ -605,9 +605,7 @@ function checkCode() {
     .trim()
     .toLowerCase();
 
-  const inschrijven = document.getElementById("inschrijven");
-
-  const recepties =
+    const recepties =
     document.querySelectorAll(".receptie");
 
   const diners =
@@ -627,9 +625,7 @@ function checkCode() {
 
   // eerst alles verbergen
 
-  inschrijven.classList.add("hidden");
-
-  recepties.forEach(el =>
+   recepties.forEach(el =>
     el.classList.add("hidden")
   );
 
@@ -649,9 +645,7 @@ function checkCode() {
 
   if(code === "trouw") {
 
-    inschrijven.classList.remove("hidden");
-
-    recepties.forEach(el =>
+       recepties.forEach(el =>
       el.classList.remove("hidden")
     );
 
