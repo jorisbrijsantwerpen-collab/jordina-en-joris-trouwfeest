@@ -583,20 +583,6 @@ footer {
 </head>
 <script>
 
-function hideAllProtected() {
-  document.querySelectorAll(
-    '.trouw-item, .feest-item, .suite-item'
-  ).forEach(el => {
-    el.classList.add('hidden');
-  });
-}
-
-function showItems(className) {
-  document.querySelectorAll(className).forEach(el => {
-    el.classList.remove('hidden');
-  });
-}
-
 function checkCode() {
 
   const code = document
@@ -605,29 +591,36 @@ function checkCode() {
     .trim()
     .toLowerCase();
 
-  hideAllProtected();
-
+ function hideAllProtected() {
+  document.querySelectorAll(
+    '.trouw-item, .feest-item, .suite-item, .registratie-trouw, .registratie-feest, .registratie-suite'
+  ).forEach(el => {
+    el.classList.add('hidden');
+  });
+}
   switch(code) {
 
     case 'trouw':
       showItems('.trouw-item');
+      showItems('.registratie-trouw');
       break;
 
     case 'feest':
       showItems('.feest-item');
+      showItems('.registratie-feest');
       break;
 
     case 'suite':
       showItems('.trouw-item');
       showItems('.feest-item');
       showItems('.suite-item');
+      showItems('.registratie-suite');
       break;
 
     default:
       alert('Deze code werd niet herkend.');
   }
 }
-  
 </script>
   
 <body>
