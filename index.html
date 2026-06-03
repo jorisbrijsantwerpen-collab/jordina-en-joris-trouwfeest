@@ -159,7 +159,55 @@ h3 {
   position: relative;
   left: -4px;
 }
+/* TOEGANGSCODE */
 
+.code-box {
+  text-align: center;
+}
+
+.code-intro {
+  font-style: italic;
+  color: #6b4f3f;
+  margin-bottom: 25px;
+}
+
+.code-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.code-form input {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(201,164,92,0.4);
+  background: rgba(255,255,255,0.7);
+  font-family: inherit;
+  min-width: 220px;
+}
+
+.code-form input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(201,164,92,0.25);
+}
+
+.code-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  background: var(--gold);
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.code-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
 /* INSCHRIJVEN */
 .inschrijf-tekst p {
   text-align: center;
