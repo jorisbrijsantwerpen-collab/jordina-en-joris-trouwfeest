@@ -1019,10 +1019,14 @@ function checkAfterImages() {
 
 checkAfterImages();
 
-document.getElementById("guestCode").addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    checkCode();
-  }
+document.addEventListener("DOMContentLoaded", function() {
+
+  document.getElementById("guestCode").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      checkCode();
+    }
+  });
+
 });
 
 </script>
