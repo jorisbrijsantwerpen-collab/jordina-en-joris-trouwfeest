@@ -656,13 +656,7 @@ function checkCode() {
   }
 }
 </script>
-document.getElementById("guestCode").addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    checkCode();
-  }
-});
 
-  alert('Deze code werd niet herkend.');  
 <body>
 
 <header>
@@ -1026,6 +1020,12 @@ function checkAfterImages() {
 checkAfterImages();
 
 </script>
-
+document.getElementById("guestCode").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    checkCode();
+  }
+});
+</script>
+  alert('Deze code werd niet herkend.');  
 </body>
 </html>
