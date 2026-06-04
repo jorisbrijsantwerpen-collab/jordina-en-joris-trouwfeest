@@ -627,6 +627,13 @@ function checkCode() {
         .getElementById('inschrijvenTrouw')
         .classList.remove('hidden');
 
+      document.getElementById('codeBox').style.display = 'none';
+
+document.getElementById('groteDag').scrollIntoView({
+  behavior: 'smooth',
+  block: 'start'
+});
+
       break;
 
     case 'feest':
@@ -637,6 +644,12 @@ function checkCode() {
         .getElementById('inschrijvenFeest')
         .classList.remove('hidden');
 
+      document.getElementById('codeBox').style.display = 'none';
+
+document.getElementById('groteDag').scrollIntoView({
+  behavior: 'smooth',
+  block: 'start'
+});
       break;
 
     case 'suite':
@@ -649,6 +662,12 @@ function checkCode() {
         .getElementById('inschrijvenSuite')
         .classList.remove('hidden');
 
+      document.getElementById('codeBox').style.display = 'none';
+
+document.getElementById('groteDag').scrollIntoView({
+  behavior: 'smooth',
+  block: 'start'
+});
       break;
 
     default:
@@ -671,7 +690,7 @@ function checkCode() {
 
   <section>
 
-<div class="info-box">
+<div class="info-box" id="groteDag">
   <h2>De grote dag</h2>
 
 <div class="timeline">
@@ -726,7 +745,7 @@ function checkCode() {
 
 </div>
 </div>    
-<div class="info-box code-box">
+<div class="info-box code-box" id="codeBox">
   <h2>Uitnodiging ontgrendelen</h2>
 
   <p class="code-intro">
