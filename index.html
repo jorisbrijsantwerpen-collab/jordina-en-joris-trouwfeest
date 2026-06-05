@@ -642,6 +642,14 @@ footer {
   color: white;
   cursor: pointer;
 }  
+  .lightbox {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.lightbox.show {
+  opacity: 1;
+}
 </style>
 </head>
 <script>
@@ -1134,6 +1142,10 @@ document.getElementById("slideshowImage")
     lightboxImage.src = this.src;
     lightbox.classList.remove("hidden");
 
+setTimeout(() => {
+  lightbox.classList.add("show");
+}, 10);
+
 });
   
 // after-wedding slideshow
@@ -1145,6 +1157,10 @@ if (afterSlide) {
     lightboxImage.src = this.src;
     lightbox.classList.remove("hidden");
 
+setTimeout(() => {
+  lightbox.classList.add("show");
+}, 10);
+
   });
 }
 
@@ -1155,9 +1171,11 @@ lightbox.addEventListener("click", function(event) {
     event.target === lightbox ||
     event.target.classList.contains("close-lightbox")
   ) {
-    lightbox.classList.add("hidden");
-  }
+  lightbox.classList.remove("show");
 
+setTimeout(() => {
+  lightbox.classList.add("hidden");
+}, 350);
 });
 
   const prevBtn = document.querySelector(".lightbox-prev");
@@ -1202,8 +1220,12 @@ nextBtn.addEventListener("click", function(event) {
   }
 
   if (event.key === "Escape") {
-    lightbox.classList.add("hidden");
-  }
+  lightbox.classList.remove("show");
+
+setTimeout(() => {
+  lightbox.classList.add("hidden");
+}, 350);
+    
 
 });
 </script>
