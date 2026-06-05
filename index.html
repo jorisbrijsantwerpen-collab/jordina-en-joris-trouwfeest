@@ -599,8 +599,10 @@ footer {
 }
 
 .lightbox img {
-  width: 100vw;
-  height: 100vh;
+  max-width: 95vw;
+  max-height: 95vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
 }
   .lightbox-prev,
@@ -736,7 +738,8 @@ document.getElementById('groteDag').scrollIntoView({
    }
 }
 </script>
-
+ 
+<body>
 <div id="lightbox" class="lightbox hidden">
 
   <span class="close-lightbox">&times;</span>
@@ -748,9 +751,6 @@ document.getElementById('groteDag').scrollIntoView({
   <span class="lightbox-next">&#10095;</span>
 
 </div>
-  
-<body>
-
 <header>
   <h1>Jordina & Joris</h1>
   <div class="date">17 · 10 · 26</div>
@@ -1128,11 +1128,6 @@ const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 
 // gewone slideshow
-document.getElementById("slideshowImage")
-  .addEventListener("click", function() {
-
-        lightbox.classList.remove("hidden");
-});
 document.getElementById("slideshowImage")
   .addEventListener("click", function() {
 
