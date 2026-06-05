@@ -1234,7 +1234,7 @@ nextBtn.addEventListener("click", function(event) {
 
 });
 
-  document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function(event) {
 
   if (lightbox.classList.contains("hidden")) return;
 
@@ -1247,12 +1247,14 @@ nextBtn.addEventListener("click", function(event) {
   }
 
   if (event.key === "Escape") {
-  lightbox.classList.remove("show");
 
-setTimeout(() => {
-  lightbox.classList.add("hidden");
-}, 350);
-    
+    lightbox.classList.remove("show");
+
+    setTimeout(() => {
+      lightbox.classList.add("hidden");
+    }, 350);
+
+  }
 
 });
 </script>
