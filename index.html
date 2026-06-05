@@ -598,6 +598,40 @@ footer {
   object-fit: contain;
 }
 
+.lightbox img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+}
+  .lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  padding: 15px;
+  z-index: 10000;
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  transform: translateY(-50%) scale(1.15);
+}
+
+.close-lightbox:hover {
+  transform: scale(1.15);
+}
 .close-lightbox {
   position: absolute;
   top: 20px;
@@ -704,8 +738,15 @@ document.getElementById('groteDag').scrollIntoView({
 </script>
 
 <div id="lightbox" class="lightbox hidden">
+
   <span class="close-lightbox">&times;</span>
+
+  <span class="lightbox-prev">&#10094;</span>
+
   <img id="lightboxImage" src="" alt="">
+
+  <span class="lightbox-next">&#10095;</span>
+
 </div>
   
 <body>
@@ -994,7 +1035,11 @@ setInterval(() => {
   slideshowEl.style.opacity = 0;
   setTimeout(() => {
     currentSlide = (currentSlide + 1) % slideshowImages.length;
-    slideshowEl.src = slideshowImages[currentSlide];
+slideshowEl.src = slideshowImages[currentSlide];
+
+if (!lightbox.classList.contains("hidden")) {
+  lightboxImage.src = slideshowImages[currentSlide];
+}
     slideshowEl.style.opacity = 1;
   }, 600);
 }, 3500);
@@ -1086,10 +1131,16 @@ const lightboxImage = document.getElementById("lightboxImage");
 document.getElementById("slideshowImage")
   .addEventListener("click", function() {
 
+        lightbox.classList.remove("hidden");
+});
+document.getElementById("slideshowImage")
+  .addEventListener("click", function() {
+
     lightboxImage.src = this.src;
     lightbox.classList.remove("hidden");
-});
 
+});
+  
 // after-wedding slideshow
 const afterSlide = document.getElementById("afterSlideshowImage");
 
@@ -1103,8 +1154,62 @@ if (afterSlide) {
 }
 
 // sluiten
-lightbox.addEventListener("click", function() {
-  lightbox.classList.add("hidden");
+lightbox.addEventListener("click", function(event) {
+
+  if (
+    event.target === lightbox ||
+    event.target.classList.contains("close-lightbox")
+  ) {
+    lightbox.classList.add("hidden");
+  }
+
+});
+
+  const prevBtn = document.querySelector(".lightbox-prev");
+const nextBtn = document.querySelector(".lightbox-next");
+
+prevBtn.addEventListener("click", function(event) {
+
+  event.stopPropagation();
+
+  currentSlide =
+    (currentSlide - 1 + slideshowImages.length)
+    % slideshowImages.length;
+
+  slideshowEl.src = slideshowImages[currentSlide];
+  lightboxImage.src = slideshowImages[currentSlide];
+
+});
+
+nextBtn.addEventListener("click", function(event) {
+
+  event.stopPropagation();
+
+  currentSlide =
+    (currentSlide + 1)
+    % slideshowImages.length;
+
+  slideshowEl.src = slideshowImages[currentSlide];
+  lightboxImage.src = slideshowImages[currentSlide];
+
+});
+
+  document.addEventListener("keydown", function(event) {
+
+  if (lightbox.classList.contains("hidden")) return;
+
+  if (event.key === "ArrowLeft") {
+    prevBtn.click();
+  }
+
+  if (event.key === "ArrowRight") {
+    nextBtn.click();
+  }
+
+  if (event.key === "Escape") {
+    lightbox.classList.add("hidden");
+  }
+
 });
 </script>
 </body>
