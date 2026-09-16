@@ -209,6 +209,63 @@ h3 {
   box-shadow: 0 8px 18px rgba(0,0,0,0.15);
 }
 /* INSCHRIJVEN */
+/* INSCHRIJVINGEN AFGESLOTEN */
+.registratie-gesloten {
+  position: relative;
+  overflow: hidden;
+}
+
+.registratie-gesloten::after {
+  content: "INSCHRIJVINGEN AFGESLOTEN";
+  position: absolute;
+  top: 22px;
+  right: -48px;
+  transform: rotate(8deg);
+  background: var(--gold);
+  color: white;
+  padding: 8px 58px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+}
+
+.gesloten-oud {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  opacity: 0.62;
+}
+
+.gesloten-oud-link {
+  display: inline-block;
+  color: #6b4f3f;
+  opacity: 0.55;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  pointer-events: none;
+  cursor: default;
+}
+
+.gesloten-nieuw {
+  margin: 26px auto 4px;
+  max-width: 650px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: rgba(247,219,227,0.72);
+  border: 1px solid rgba(201,164,92,0.45);
+  text-align: center;
+  line-height: 1.7;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.07);
+}
+
+.gesloten-nieuw strong {
+  color: var(--blue);
+}
+
+.gesloten-nieuw .emoji {
+  font-size: 1.25rem;
+}
+
 .inschrijf-tekst p {
   text-align: center;
 }
@@ -809,10 +866,10 @@ document.getElementById('groteDag').scrollIntoView({
 
 <!-- INSCHRIJVEN TROUW -->
 
-<div class="info-box registratie-trouw hidden" id="inschrijvenTrouw">
+<div class="info-box registratie-trouw registratie-gesloten hidden" id="inschrijvenTrouw">
   <h2>Inschrijven</h2>
 
-  <div class="inschrijf-tekst">
+  <div class="inschrijf-tekst gesloten-oud">
     <p>
       Graag voor <strong>12 september 2026</strong>
       laten weten of je aanwezig bent, ook als je er niet bij kan zijn.
@@ -820,20 +877,26 @@ document.getElementById('groteDag').scrollIntoView({
   </div>
 
   <p style="text-align:center;">
-    <a href="https://forms.office.com/e/X7c1SDGRR4"
-       target="_blank"
-       class="inschrijf-link">
-       👉 Klik hier om je in te schrijven 
-    </a>
+    <span class="gesloten-oud-link">
+      👉 Klik hier om je in te schrijven
+    </span>
   </p>
+
+  <div class="gesloten-nieuw">
+    <span class="emoji">🥂</span><br>
+    <strong>De inschrijvingen zijn afgesloten!</strong><br>
+    Zou je toch nog graag willen mee feesten?
+    Laat dan even iets weten aan <strong>Jordina of Joris</strong>.
+    Misschien kunnen we nog iets regelen! 💛
+  </div>
 </div>
 
 <!-- INSCHRIJVEN FEEST -->
 
-<div class="info-box registratie-feest hidden" id="inschrijvenFeest">
+<div class="info-box registratie-feest registratie-gesloten hidden" id="inschrijvenFeest">
   <h2>Inschrijven</h2>
 
-  <div class="inschrijf-tekst">
+  <div class="inschrijf-tekst gesloten-oud">
     <p>
       Graag voor <strong>12 september 2026</strong>
       laten weten of je aanwezig bent, ook als je er niet bij kan zijn.
@@ -841,20 +904,26 @@ document.getElementById('groteDag').scrollIntoView({
   </div>
 
   <p style="text-align:center;">
-    <a href="https://forms.office.com/e/i4F9kp2pxm"
-       target="_blank"
-       class="inschrijf-link">
-       👉 Klik hier om je in te schrijven
-    </a>
+    <span class="gesloten-oud-link">
+      👉 Klik hier om je in te schrijven
+    </span>
   </p>
+
+  <div class="gesloten-nieuw">
+    <span class="emoji">🥂</span><br>
+    <strong>De inschrijvingen zijn afgesloten!</strong><br>
+    Zou je toch nog graag willen mee feesten?
+    Laat dan even iets weten aan <strong>Jordina of Joris</strong>.
+    Misschien kunnen we nog iets regelen! 💛
+  </div>
 </div>
 
 <!-- INSCHRIJVEN SUITE -->
 
-<div class="info-box registratie-suite hidden" id="inschrijvenSuite">
+<div class="info-box registratie-suite registratie-gesloten hidden" id="inschrijvenSuite">
   <h2>Inschrijven</h2>
 
-  <div class="inschrijf-tekst">
+  <div class="inschrijf-tekst gesloten-oud">
     <p>
       Graag voor <strong>12 september 2026</strong>
       laten weten of je aanwezig bent, ook als je er niet bij kan zijn.
@@ -862,12 +931,18 @@ document.getElementById('groteDag').scrollIntoView({
   </div>
 
   <p style="text-align:center;">
-    <a href="https://forms.office.com/e/dE9ZvN8ZnT"
-       target="_blank"
-       class="inschrijf-link">
-       👉 Klik hier om je in te schrijven
-    </a>
+    <span class="gesloten-oud-link">
+      👉 Klik hier om je in te schrijven
+    </span>
   </p>
+
+  <div class="gesloten-nieuw">
+    <span class="emoji">🥂</span><br>
+    <strong>De inschrijvingen zijn afgesloten!</strong><br>
+    Zou je toch nog graag willen mee feesten?
+    Laat dan even iets weten aan <strong>Jordina of Joris</strong>.
+    Misschien kunnen we nog iets regelen! 💛
+  </div>
 </div>
 
 <div class="info-box">
