@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trouwfeest â€“ 17 oktober 2026</title>
+<title>Trouwfeest “ 17 oktober 2026</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
@@ -1081,8 +1081,9 @@ const slideshowImages = Array.from({length: 99}, (_, i) => `foto${i + 1}.jpg`);
 let currentSlide = 0;
 const slideshowEl = document.getElementById("slideshowImage");
 
-// Nieuwe trouwherinneringen: foto's after1.jpg t.e.m. after20.jpg
-const afterImages = Array.from({length: 20}, (_, i) => `after${i + 1}.jpg`);
+// Nieuwe trouwherinneringen: controleer welke bestanden werkelijk laden.
+const afterImageCandidates = Array.from({length: 20}, (_, i) => `after${i + 1}.jpg`);
+let afterImages = [];
 let afterIndex = 0;
 const afterImg = document.getElementById("afterSlideshowImage");
 const afterSlideshow = document.getElementById("afterSlideshow");
@@ -1098,17 +1099,42 @@ function updateAfterSection() {
 }
 updateAfterSection();
 
-// Toon de nieuwe slideshow zodra after1.jpg effectief geladen is.
+// Neem alleen foto's op die werkelijk kunnen laden; ontbrekende bestanden worden overgeslagen.
 if (afterImg) {
-  afterImg.onload = () => {
-    if (afterFallback) afterFallback.style.display = "none";
-    if (afterSlideshow) afterSlideshow.style.display = "block";
-  };
-  afterImg.onerror = () => {
-    if (afterFallback) afterFallback.style.display = "block";
-    if (afterSlideshow) afterSlideshow.style.display = "none";
-  };
-  afterImg.src = afterImages[0];
+  Promise.all(afterImageCandidates.map(src => new Promise(resolve => {
+    const test = new Image();
+    test.onload = () => resolve(src);
+    test.onerror = () => resolve(null);
+    test.src = src;
+  }))).then(results => {
+    afterImages = results.filter(Boolean);
+    if (afterImages.length) {
+      afterIndex = 0;
+      afterImg.onerror = () => {
+        const failedSrc = afterImg.getAttribute("src");
+        afterImages = afterImages.filter(src => src !== failedSrc);
+        if (afterImages.length) {
+          afterIndex = 0;
+          afterImg.src = afterImages[0];
+        } else {
+          if (afterFallback) {
+            afterFallback.style.display = "block";
+            afterFallback.textContent = "De trouwfoto's konden niet worden geladen. Controleer de bestandsnamen en extensies in GitHub.";
+          }
+          if (afterSlideshow) afterSlideshow.style.display = "none";
+        }
+      };
+      afterImg.src = afterImages[0];
+      if (afterFallback) afterFallback.style.display = "none";
+      if (afterSlideshow) afterSlideshow.style.display = "block";
+    } else {
+      if (afterFallback) {
+        afterFallback.style.display = "block";
+        afterFallback.textContent = "De trouwfoto's konden niet worden geladen. Controleer of de bestanden after1.jpg t.e.m. after20.jpg in dezelfde map staan als index.html.";
+      }
+      if (afterSlideshow) afterSlideshow.style.display = "none";
+    }
+  });
 }
 
 setInterval(() => {
@@ -1122,7 +1148,7 @@ setInterval(() => {
 }, 3500);
 
 setInterval(() => {
-  if (!afterImg || !unlocked || unlocked.style.display === "none") return;
+  if (!afterImg || !afterImages.length || !unlocked || unlocked.style.display === "none") return;
   afterImg.style.opacity = 0;
   setTimeout(() => {
     afterIndex = (afterIndex + 1) % afterImages.length;
