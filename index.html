@@ -75,29 +75,20 @@ header .invite {
   margin-top: 40px;
 }
 
-
-/* BEDANKING NA DE TROUWDAG */
 header .thank-you {
   max-width: 760px;
   margin: 38px auto 0;
-  padding: 24px 30px;
-  border: 1px solid rgba(201,164,92,0.7);
-  border-radius: 16px;
-  background: rgba(15,35,48,0.48);
   color: white;
-  font-size: 1.08rem;
-  line-height: 1.9;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+  font-size: 1.12rem;
+  line-height: 1.8;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
-
 header .thank-you strong {
   display: block;
-  margin-bottom: 10px;
-  color: #f7dbe3;
+  margin-bottom: 14px;
   font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  color: white;
 }
 
 #countdown {
@@ -807,8 +798,8 @@ document.getElementById('groteDag').scrollIntoView({
   <div class="date">17 Â· 10 Â· 26</div>
   <div class="thank-you">
     <strong>Wat een dag! ðŸ’›</strong>
-    Met een hart vol liefde en prachtige herinneringen kijken we terug op onze trouwdag.<br><br>
-    Bedankt aan iedereen die erbij was, met ons heeft gelachen, gedanst en gevierd. Jullie aanwezigheid en warmte maakten deze dag onvergetelijk en betekenden ontzettend veel voor ons.<br><br>
+    Met een hart vol liefde en prachtige herinneringen kijken we terug op onze trouwdag.<br>
+    Bedankt aan iedereen die erbij was, met ons heeft gelachen, gedanst en gevierd. Jullie aanwezigheid en warmte maakten deze dag onvergetelijk en betekenden ontzettend veel voor ons.<br>
     We delen hier graag enkele mooie momenten met jullie na.
   </div>
 </header>
@@ -1041,8 +1032,8 @@ document.getElementById('groteDag').scrollIntoView({
   <div class="lock-icon">ðŸ”’</div>
 
   <p class="after-intro">
-    <em>Onze dag beleefd, vastgelegd en gekoesterd.</em><br>
-    <em>Hier delen we met veel liefde enkele herinneringen aan onze trouwdag.</em>
+    <em>Onze dag beleefd, vastgelegd en gekoesterd</em><br>
+    <em>Hier delen we met veel liefde enkele herinneringen aan onze trouwdag</em>
   </p>
 
   <p id="afterCountdown" class="after-countdown">
@@ -1056,8 +1047,8 @@ document.getElementById('groteDag').scrollIntoView({
 
   <!-- FALLBACK -->
   <div id="afterFallback" class="after-placeholder">
-    âœ¨ Onze herinneringen worden momenteel met zorg uitgekozen.<br>
-    Binnenkort delen we ze hier met veel liefde ðŸ’›
+    âœ¨ Onze herinneringen worden momenteel geladen.<br>
+    Binnenkort delen we hier nog meer mooie momenten ðŸ’›
   </div>
 
   <!-- SLIDESHOW -->
@@ -1079,226 +1070,125 @@ document.getElementById('groteDag').scrollIntoView({
 <script>
 function toonRekening() {
   const el = document.querySelector('.bankrekening');
+  if (!el) return;
   el.innerHTML = "ðŸ’— BE82 0359 7469 7568";
   el.classList.add("fade-in");
   el.onclick = null;
 }
 
-// Slideshow
-const slideshowImages = [];
-for (let i = 1; i <= 99; i++) slideshowImages.push(`foto${i}.jpg`);
-
+// Oude herinneringen: foto's foto1.jpg t.e.m. foto99.jpg
+const slideshowImages = Array.from({length: 99}, (_, i) => `foto${i + 1}.jpg`);
 let currentSlide = 0;
 const slideshowEl = document.getElementById("slideshowImage");
 
-setInterval(() => {
-  slideshowEl.style.opacity = 0;
-  setTimeout(() => {
-    currentSlide = (currentSlide + 1) % slideshowImages.length;
-slideshowEl.src = slideshowImages[currentSlide];
-
-if (!lightbox.classList.contains("hidden")) {
-  lightboxImage.src = slideshowImages[currentSlide];
-}
-    slideshowEl.style.opacity = 1;
-  }, 600);
-}, 3500);
-</script>
-<script>
-  
-// AFTER WEDDING LOCK + LIVE COUNTDOWN
-const unlockDate = new Date("2026-10-17T00:00:00").getTime();
-
+// Nieuwe trouwherinneringen: foto's after1.jpg t.e.m. after20.jpg
+const afterImages = Array.from({length: 20}, (_, i) => `after${i + 1}.jpg`);
+let afterIndex = 0;
+const afterImg = document.getElementById("afterSlideshowImage");
+const afterSlideshow = document.getElementById("afterSlideshow");
+const afterFallback = document.getElementById("afterFallback");
 const locked = document.getElementById("afterLocked");
 const unlocked = document.getElementById("afterUnlocked");
 const countdownEl = document.getElementById("afterCountdown");
 
-function updateAfterCountdown() {
-  const now = new Date().getTime();
-  const diff = unlockDate - now;
+// De trouwdag is voorbij: toon de nieuwe herinneringen.
+function updateAfterSection() {
+  if (locked) locked.style.display = "none";
+  if (unlocked) unlocked.style.display = "block";
+}
+updateAfterSection();
 
-  if (diff <= 0) {
-    locked.style.display = "none";
-    unlocked.style.display = "block";
-    unlocked.classList.add("unlock-animate");
-    return;
-  }
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-
-  countdownEl.innerHTML = `
-    Nog <strong>${days}</strong> dagen Â·
-    ${hours}u ${minutes}m ${seconds}s gesloten
-  `;
+// Toon de nieuwe slideshow zodra after1.jpg effectief geladen is.
+if (afterImg) {
+  afterImg.onload = () => {
+    if (afterFallback) afterFallback.style.display = "none";
+    if (afterSlideshow) afterSlideshow.style.display = "block";
+  };
+  afterImg.onerror = () => {
+    if (afterFallback) afterFallback.style.display = "block";
+    if (afterSlideshow) afterSlideshow.style.display = "none";
+  };
+  afterImg.src = afterImages[0];
 }
 
-updateAfterCountdown();
-setInterval(updateAfterCountdown, 1000);
-// AFTER WEDDING SLIDESHOW
-const afterImages = [];
-for (let i = 1; i <= 20; i++) afterImages.push(`after${i}.jpg`);
-
-let afterIndex = 0;
-const afterImg = document.getElementById("afterSlideshowImage");
+setInterval(() => {
+  if (!slideshowEl) return;
+  slideshowEl.style.opacity = 0;
+  setTimeout(() => {
+    currentSlide = (currentSlide + 1) % slideshowImages.length;
+    slideshowEl.src = slideshowImages[currentSlide];
+    slideshowEl.style.opacity = 1;
+  }, 500);
+}, 3500);
 
 setInterval(() => {
-  if (!afterImg || unlocked.style.display !== "block") return;
-
+  if (!afterImg || !unlocked || unlocked.style.display === "none") return;
   afterImg.style.opacity = 0;
   setTimeout(() => {
     afterIndex = (afterIndex + 1) % afterImages.length;
     afterImg.src = afterImages[afterIndex];
     afterImg.style.opacity = 1;
-  }, 600);
+  }, 500);
 }, 3600);
-  // AFTER WEDDING â€“ FALLBACK CHECK
-const afterSlideshow = document.getElementById("afterSlideshow");
-const afterFallback = document.getElementById("afterFallback");
 
-function checkAfterImages() {
-  const testImg = new Image();
-  testImg.src = "after1.jpg";
-
-  testImg.onload = () => {
-    afterFallback.style.display = "none";
-    afterSlideshow.style.display = "block";
-  };
-
-  testImg.onerror = () => {
-    afterFallback.style.display = "block";
-    afterSlideshow.style.display = "none";
-  };
-}
-
-checkAfterImages();
-
-document.addEventListener("DOMContentLoaded", function() {
-
-  document.getElementById("guestCode").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-      checkCode();
-    }
-  });
-
-});
+// Lightbox werkt met beide slideshows en navigeert binnen de gekozen galerij.
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 let activeGallery = slideshowImages;
-let activeGalleryIndex = 0;
+let activeIndex = 0;
 
-// gewone slideshow
-document.getElementById("slideshowImage")
-  .addEventListener("click", function() {
-
-    activeGallery = slideshowImages;
-    activeGalleryIndex = currentSlide;
-    lightboxImage.src = this.src;
-    lightbox.classList.remove("hidden");
-
-setTimeout(() => {
-  lightbox.classList.add("show");
-}, 10);
-
-});
-  
-// after-wedding slideshow
-const afterSlide = document.getElementById("afterSlideshowImage");
-
-if (afterSlide) {
-  afterSlide.addEventListener("click", function() {
-
-    activeGallery = afterImages;
-    activeGalleryIndex = afterIndex;
-    lightboxImage.src = this.src;
-    lightbox.classList.remove("hidden");
-
-setTimeout(() => {
-  lightbox.classList.add("show");
-}, 10);
-
-  });
+function openLightbox(gallery, index) {
+  if (!lightbox || !lightboxImage) return;
+  activeGallery = gallery;
+  activeIndex = index;
+  lightboxImage.src = activeGallery[activeIndex];
+  lightbox.classList.remove("hidden");
+  setTimeout(() => lightbox.classList.add("show"), 10);
 }
 
-// sluiten
-lightbox.addEventListener("click", function(event) {
+if (slideshowEl) slideshowEl.addEventListener("click", () => openLightbox(slideshowImages, currentSlide));
+if (afterImg) afterImg.addEventListener("click", () => openLightbox(afterImages, afterIndex));
 
-  if (
-    event.target === lightbox ||
-    event.target.classList.contains("close-lightbox")
-  ) {
-  lightbox.classList.remove("show");
+function moveLightbox(direction) {
+  activeIndex = (activeIndex + direction + activeGallery.length) % activeGallery.length;
+  lightboxImage.src = activeGallery[activeIndex];
+  if (activeGallery === slideshowImages) {
+    currentSlide = activeIndex;
+    if (slideshowEl) slideshowEl.src = activeGallery[activeIndex];
+  } else {
+    afterIndex = activeIndex;
+    if (afterImg) afterImg.src = activeGallery[activeIndex];
+  }
+}
 
-setTimeout(() => {
-  lightbox.classList.add("hidden");
-}, 350);
-
- }   
-});
-
-  const prevBtn = document.querySelector(".lightbox-prev");
+const prevBtn = document.querySelector(".lightbox-prev");
 const nextBtn = document.querySelector(".lightbox-next");
+if (prevBtn) prevBtn.addEventListener("click", e => { e.stopPropagation(); moveLightbox(-1); });
+if (nextBtn) nextBtn.addEventListener("click", e => { e.stopPropagation(); moveLightbox(1); });
 
-prevBtn.addEventListener("click", function(event) {
-
-  event.stopPropagation();
-
-  activeGalleryIndex = (activeGalleryIndex - 1 + activeGallery.length) % activeGallery.length;
-  lightboxImage.src = activeGallery[activeGalleryIndex];
-
-  if (activeGallery === slideshowImages) {
-    currentSlide = activeGalleryIndex;
-    slideshowEl.src = slideshowImages[currentSlide];
-  } else {
-    afterIndex = activeGalleryIndex;
-    afterImg.src = afterImages[afterIndex];
-  }
-
-});
-
-nextBtn.addEventListener("click", function(event) {
-
-  event.stopPropagation();
-
-  activeGalleryIndex = (activeGalleryIndex + 1) % activeGallery.length;
-  lightboxImage.src = activeGallery[activeGalleryIndex];
-
-  if (activeGallery === slideshowImages) {
-    currentSlide = activeGalleryIndex;
-    slideshowEl.src = slideshowImages[currentSlide];
-  } else {
-    afterIndex = activeGalleryIndex;
-    afterImg.src = afterImages[afterIndex];
-  }
-
-});
-
-document.addEventListener("keydown", function(event) {
-
-  if (lightbox.classList.contains("hidden")) return;
-
-  if (event.key === "ArrowLeft") {
-    prevBtn.click();
-  }
-
-  if (event.key === "ArrowRight") {
-    nextBtn.click();
-  }
-
-  if (event.key === "Escape") {
-
+if (lightbox) lightbox.addEventListener("click", event => {
+  if (event.target === lightbox || event.target.classList.contains("close-lightbox")) {
     lightbox.classList.remove("show");
-
-    setTimeout(() => {
-      lightbox.classList.add("hidden");
-    }, 350);
-
+    setTimeout(() => lightbox.classList.add("hidden"), 350);
   }
+});
 
+document.addEventListener("keydown", event => {
+  if (!lightbox || lightbox.classList.contains("hidden")) return;
+  if (event.key === "ArrowLeft") moveLightbox(-1);
+  if (event.key === "ArrowRight") moveLightbox(1);
+  if (event.key === "Escape") {
+    lightbox.classList.remove("show");
+    setTimeout(() => lightbox.classList.add("hidden"), 350);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const guestCode = document.getElementById("guestCode");
+  if (guestCode) guestCode.addEventListener("keypress", event => {
+    if (event.key === "Enter") checkCode();
+  });
 });
 </script>
 </body>
 </html>
-
